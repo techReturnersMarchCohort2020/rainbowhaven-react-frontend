@@ -2,13 +2,13 @@ import React, { useState } from "react";
 
 import ListClients from "./ListClients";
 import ListVolunteers from "./ListVolunteers";
-import AddItem from "./AddItem";
+import AddClient from "./AddClient";
 import AppHeader from "./AppHeader";
 
 import "./Home.css";
 
 function Home() {
-  const [tasks, setTasks] = useState([
+  const [items, setClients] = useState([
     {
       id: "001",
       full_name: "Client Name1",
@@ -51,12 +51,24 @@ function Home() {
     },
   ]);
 
-  const activeTasks = tasks.filter((item) => !item.completed);
+  const activeTasks = items.filter((item) => !item.completed);
 
-  const completedTasks = tasks.filter((item) => item.completed);
+  const completedTasks = items.filter((item) => item.completed);
 
+  function addClient(full_name, email, phone, address) {
+    const newClient = {
+      full_name: full_name,
+      email: email,
+      phone: phone,
+      address: address,
+      completed: false,
+    };
+
+    const updatedClients = [...items, newClient];
+    setClients(updatedClients);
+  }
   return (
-    <div>
+    <div className="home_body">
       <AppHeader />
       <div className="row">
         {activeTasks.map((item) => (
@@ -83,7 +95,7 @@ function Home() {
           />
         ))}
         <div className="Item__border" />
-        <AddItem />
+        <AddClient addClient={addClient} />
         <div className="Item__border" />
         <ListVolunteers />
       </div>
