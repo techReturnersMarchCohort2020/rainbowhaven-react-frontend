@@ -6,7 +6,6 @@ function volunteerMainPage() {
 
         <div>
             <h3>Your Existing Clients</h3>
-
             <div className="container" align="center">
                 <div className="row col-10 list-group-item d-flex justify-content-between align-items-center ">
                     <div className="col-12 col-md-6  task-text " align="left" > Client Details <br />Name  <br /> Tele <br />  Address</div>
@@ -16,7 +15,6 @@ function volunteerMainPage() {
                     </div>
                 </div>
             </div>
-
             <div className="container" align="center">
                 <div className="row col-10 list-group-item d-flex justify-content-between align-items-center ">
                     <div className="col-12 col-md-6  task-text" align="center"> Client Details <br />Name  <br /> Tele <br />  Address</div>
@@ -35,13 +33,8 @@ function volunteerMainPage() {
                     </div>
                 </div>
             </div>
-
         </div>
-
-
     );
-
-
 }
         
 export default volunteerMainPage;

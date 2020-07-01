@@ -27,9 +27,7 @@ export default class pickUpVolunteer extends Component {
                                     <label className="custom-control-label" for="customRadio2">Volunteer Name 2</label>
                                     <span className="badge badge-primary badge-pill distance">distance </span>
                                 </div>
-
                             </li>
-
                         </div>
                         <div>
                             <li className="list-group-item d-flex justify-content-between align-items-center">
@@ -52,7 +50,7 @@ export default class pickUpVolunteer extends Component {
                     </ul>
                 </div>
                 <div class="text-center" >
-                <Button variant="primary" style={{width:'100px',color: 'white'}}>Deliver</Button>
+                    <Button variant="primary" style={{ width: '100px', color: 'white' }}>Deliver</Button>
                 </div>
             </form>
         );
