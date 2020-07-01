@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button } from 'react-bootstrap';
 
 export default class SignUp extends Component {
     render() {
@@ -12,12 +13,12 @@ export default class SignUp extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label>Last name</label>
+                    <label>Email address</label>
                     <input type="text" className="form-control" placeholder="Last name" />
                 </div>
 
                 <div className="form-group">
-                    <label>Email address</label>
+                    <label>Telephone</label>
                     <input type="email" className="form-control" placeholder="Enter email" />
                 </div>
 
@@ -26,7 +27,9 @@ export default class SignUp extends Component {
                     <input type="password" className="form-control" placeholder="Enter password" />
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                <div class="text-center" >
+                <Button variant="primary" style={{width:'100px'}}><a href="/volunteer-Main-Page" style={{color: 'white'}}>Sign Up</a></Button>
+                </div>
                 <p className=" text-right">
                     Already registered <a href="/sign-in">sign in?</a> 
                 </p>
