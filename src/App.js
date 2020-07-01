@@ -26,10 +26,10 @@ function App() {
           
             <ul className="navbar-nav ml-auto">
               <li className="nav-item" >
-                <Link className="nav-link" to={"/sign-in"}>Login</Link>
+                <Link className="nav-link" to={"/sign-in"}>Log in</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to={"/sign-up"}>SignUp</Link>
+                <Link className="nav-link" to={"/sign-up"}>Register</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to={"/pickUp-Volunteer"}>pickUpVolunteer</Link>
