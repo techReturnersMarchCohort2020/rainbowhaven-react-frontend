@@ -13,15 +13,16 @@ import Home from "./Components/ManagerHome/Home";
 
 function App() {
   
-  return (<Router>
+  return (
+  <Router>
     <div className="App">
       <nav className="navbar navbar-expand-lg navbar-light fixed-top">
         <div className="container">
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
           
-//             <Link className="navbar-brand" to={"/Home"}>
+{/* //             <Link className="navbar-brand" to={"/Home"}>
 //               Home
-//             </Link>
+//             </Link> */}
 
           
             <ul className="navbar-nav ml-auto">
@@ -52,6 +53,7 @@ function App() {
           </Switch>
 
         </div>
+      </div>
       </div>
     </Router>
   );
