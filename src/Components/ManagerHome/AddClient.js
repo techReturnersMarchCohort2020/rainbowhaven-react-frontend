@@ -1,15 +1,28 @@
 import React, { Fragment, useState } from "react";
-function AddItem(props) {
-  const [full_name, setText] = useState("");
 
-  function handleTextChange(e) {
-    setText(e.target.value);
+function AddClient(props) {
+  const [full_name, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+
+  function handleFullNameChange(event) {
+    setFullName(event.target.value);
   }
 
-  function handleAddTaskClick(e) {
+  function handleEmailChange(event) {
+    setEmail(event.target.value);
+  }
+  function handlePhoneChange(event) {
+    setPhone(event.target.value);
+  }
+  function handleAddressChange(event) {
+    setAddress(event.target.value);
+  }
+
+  function handleAddClientClick(e) {
     e.preventDefault();
-    props.addTask(full_name);
-    setText("");
+    props.addClient(full_name, email, phone, address);
   }
 
   return (
@@ -28,7 +41,7 @@ function AddItem(props) {
                         type="text"
                         className="form-control"
                         placeholder="Name"
-                        onChange={handleTextChange}
+                        onChange={handleFullNameChange}
                         value={full_name}
                       />
                     </div>
@@ -39,8 +52,8 @@ function AddItem(props) {
                         type="email"
                         class="form-control"
                         placeholder="Email"
-                        // onChange={handleTextChange}
-                        // value={email}
+                        onChange={handleEmailChange}
+                        value={email}
                       />
                     </div>
                   </div>
@@ -50,8 +63,8 @@ function AddItem(props) {
                         type="text"
                         className="form-control"
                         placeholder="Phone"
-                        // onChange={handleTextChange}
-                        // value={phone}
+                        onChange={handlePhoneChange}
+                        value={phone}
                       />
                     </div>
                   </div>
@@ -62,8 +75,8 @@ function AddItem(props) {
                         type="text"
                         className="form-control"
                         placeholder="Address"
-                        // onChange={handleTextChange}
-                        // value={address}
+                        onChange={handleAddressChange}
+                        value={address}
                       />
                     </div>
                   </div>
@@ -75,7 +88,7 @@ function AddItem(props) {
                       type="submit"
                       value="Submit"
                       className="btn btn-outline-danger btn-block"
-                      onClick={handleAddTaskClick}
+                      onClick={handleAddClientClick}
                     />
                   </div>
                 </div>
@@ -88,4 +101,4 @@ function AddItem(props) {
   );
 }
 
-export default AddItem;
+export default AddClient;
