@@ -4,7 +4,12 @@
   box-sizing: border-box;
 }
 body {
-  background: #1C8EF9 !important;
+  /* background: #145088 !important; */
+  background: url("https://lirp-cdn.multiscreensite.com/79622912/dms3rep/multi/opt/RH+bigger+logo-640w.jpg");
+  background-size:contain;
+    background-position:top;
+    background: cover;
+  
   min-height: 100vh;
   display: flex;
   font-weight: 400;

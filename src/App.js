@@ -6,7 +6,10 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Login from "./Components/login";
 import SignUp from "./Components/signup";
-import Home from "./Components/Home";
+import pickUpVolunteer from "./Components/pickUpVolunteer/pickUpVolunteer";
+import volunteerMainPage from "./Components/volunteerMainPage/volunteerMainPage";
+
+
 
 function App() {
   
@@ -14,7 +17,6 @@ function App() {
     <div className="App">
       <nav className="navbar navbar-expand-lg navbar-light fixed-top">
         <div className="container">
-          <Link className="navbar-brand" to={"/Home"}>Home</Link> 
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item" >
@@ -23,18 +25,23 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to={"/sign-up"}>SignUp</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/pickUp-Volunteer"}>pickUpVolunteer</Link>
+              </li>
             </ul>
           </div>
         </div>
       </nav>
 
       <div className="auth-wrapper">
-        <div className="auth-inner">
+        <div className="auth-inner" style={{width:'700px'}}>
           <Switch>
-            <Route exact path='/' component={Home} />
+            <Route exact path='/' component={Login} />
             <Route path="/sign-in" component={Login} />
             <Route path="/sign-up" component={SignUp} />
-            <Route path="/Home" component={Home} />
+            <Route path="/pickUp-Volunteer" style={{width:'1000px'}} component={pickUpVolunteer} />
+            <Route path="/volunteer-Main-Page" style={{width:'1000px'}} component={volunteerMainPage} />
+
           </Switch>
         </div>
       </div>
