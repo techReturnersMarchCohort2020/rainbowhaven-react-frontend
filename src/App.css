@@ -6,7 +6,7 @@
   height: 40vmin;
 }
 
-.App-header {
+/* .App-header {
   background-color: #485c85;
   min-height: 100vh;
   display: flex;
@@ -15,8 +15,22 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+} */
+
+.App{
+  background-image: url(./images/bigBalloon.jpg);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .App-link {
   color: #09d3ac;
+}
+
+.navbar {
+  height: 5%;
+  opacity: 0.5; 
+  filter:(opacity=50);
 }
