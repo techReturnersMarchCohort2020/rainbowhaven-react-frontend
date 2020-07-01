@@ -1,14 +1,14 @@
-
-import React from 'react';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import React from "react";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Login from "./Components/login";
 import SignUp from "./Components/signup";
+
 import pickUpVolunteer from "./Components/pickUpVolunteer/pickUpVolunteer";
 import volunteerMainPage from "./Components/volunteerMainPage/volunteerMainPage";
-
+import Home from "./Components/ManagerHome/Home";
 
 
 function App() {
@@ -18,6 +18,12 @@ function App() {
       <nav className="navbar navbar-expand-lg navbar-light fixed-top">
         <div className="container">
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+          
+//             <Link className="navbar-brand" to={"/Home"}>
+//               Home
+//             </Link>
+
+          
             <ul className="navbar-nav ml-auto">
               <li className="nav-item" >
                 <Link className="nav-link" to={"/sign-in"}>Login</Link>
@@ -29,9 +35,10 @@ function App() {
                 <Link className="nav-link" to={"/pickUp-Volunteer"}>pickUpVolunteer</Link>
               </li>
             </ul>
+          </div> 
           </div>
-        </div>
-      </nav>
+        </nav>
+
 
       <div className="auth-wrapper">
         <div className="auth-inner" style={{width:'700px'}}>
@@ -43,12 +50,11 @@ function App() {
             <Route path="/volunteer-Main-Page" style={{width:'1000px'}} component={volunteerMainPage} />
 
           </Switch>
+
         </div>
       </div>
-    </div></Router>
+    </Router>
   );
 }
-
-
 
 export default App;
