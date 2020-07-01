@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import './signup.css'
+import { Button } from 'react-bootstrap';
+
 
 export default class SignUp extends Component {
     render() {
@@ -12,6 +14,7 @@ export default class SignUp extends Component {
                         <label>Name</label>
                         <input type="text" className="form-control" placeholder="Full name" />
                     </div>
+
 
                     <div className="form-group">
                         <label>Address</label>
@@ -28,17 +31,38 @@ export default class SignUp extends Component {
                         <input type="email" className="form-control" placeholder="Email address " />
                     </div>
 
+//                 <div className="form-group">
+//                     <label>Email address</label>
+//                     <input type="text" className="form-control" placeholder="Last name" />
+//                 </div>
+
+//                 <div className="form-group">
+//                     <label>Telephone</label>
+//                     <input type="email" className="form-control" placeholder="Enter email" />
+//                 </div>
+
+
                     <div className="form-group">
                         <label>Password</label>
                         <input type="password" className="form-control" placeholder="Create password" />
                     </div>
 
-                    <button type="submit" className="btn btn-primary btn-block btn-login">Sign Up</button>
-                    <p className="text-right">
-                        Already registered? <a href="/sign-in">Log in</a> 
-                    </p>
-                </form>
-            </layer>
+
+//                     <button type="submit" className="btn btn-primary btn-block btn-login">Sign Up</button>
+//                     <p className="text-right">
+//                         Already registered? <a href="/sign-in">Log in</a> 
+//                     </p>
+//                 </form>
+           
+                <div class="text-center" >
+                <Button variant="primary" style={{width:'100px'}}><a href="/volunteer-Main-Page" style={{color: 'white'}}>Sign Up</a></Button>
+                </div>
+                <p className=" text-right">
+                    Already registered <a href="/sign-in">sign in?</a> 
+                </p>
+           </layer>
+            </form>
+
         );
     }
 }
