@@ -23,6 +23,10 @@ function AddClient(props) {
   function handleAddClientClick(e) {
     e.preventDefault();
     props.addClient(full_name, email, phone, address);
+    setFullName("");
+    setEmail("");
+    setPhone("");
+    setAddress("");
   }
 
   return (
@@ -50,7 +54,7 @@ function AddClient(props) {
                     <div className="form-group">
                       <input
                         type="email"
-                        class="form-control"
+                        className="form-control"
                         placeholder="Email"
                         onChange={handleEmailChange}
                         value={email}
