@@ -1,5 +1,4 @@
 body {
-  width: 95vw;
   color: #553e65;
   font-weight: bolder;
   background-color: #edf0f2;
@@ -8,7 +7,7 @@ body {
 }
 
 .home_body {
-  margin-top: 760px;
+  margin-top: 900px;
 }
 
 .Item__border {
@@ -72,4 +71,22 @@ body {
   background-color: #a0b3c7;
   box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.56);
   transition: all ease 500ms;
+}
+
+/* ListClients */
+h4 {
+  font-size: 14px;
+}
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 992px) {
+  h4 {
+    font-size: 16px;
+  }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+  h4 {
+    font-size: 18px;
+  }
 }
