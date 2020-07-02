@@ -16,6 +16,8 @@ function Home() {
       phone: "0161 555 5555",
       address: "M4 4EW",
       completed: false,
+      deleted: false,
+      date: "20 hours ago",
     },
     {
       client_id: "002",
@@ -24,6 +26,8 @@ function Home() {
       address: "M4 4EW",
       phone: "0161 555 5555",
       completed: false,
+      deleted: false,
+      date: "20 hours ago",
     },
     {
       client_id: "003",
@@ -32,6 +36,8 @@ function Home() {
       address: "M4 4EW",
       phone: "0161 555 5555",
       completed: true,
+      deleted: false,
+      date: "20 hours ago",
     },
     {
       client_id: "004",
@@ -40,6 +46,8 @@ function Home() {
       address: "M4 4EW",
       phone: "0161 555 5555",
       completed: true,
+      deleted: false,
+      date: "20 hours ago",
     },
     {
       client_id: "005",
@@ -48,14 +56,16 @@ function Home() {
       address: "M4 4EW",
       phone: "0161 555 5555",
       completed: true,
+      deleted: false,
+      date: "20 hours ago",
     },
   ]);
 
   const [volunteer, setVolunteers] = useState([
     {
       volunteer_id: "001",
-      full_name: "Client Name1",
-      email: "client1@gmail.com",
+      full_name: "Volunteer Name1",
+      email: "volunteer1@gmail.com",
       phone: "0161 555 5555",
       address: "M4 4EW",
       available: true,
@@ -106,7 +116,7 @@ function Home() {
             address={item.address}
             completed={item.completed}
             deleteClient={deleteClient}
-            createDate={item.createDate}
+            createDate={item.date}
           />
         ))}
         <div className="Item__border" />
@@ -120,7 +130,7 @@ function Home() {
             address={item.address}
             completed={item.completed}
             deleteClient={deleteClient}
-            createDate={item.createDate}
+            createDate={item.date}
           />
         ))}
         <div className="Item__border" />
