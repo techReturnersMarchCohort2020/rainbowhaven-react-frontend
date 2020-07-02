@@ -17,7 +17,7 @@ function Home() {
       address: "M4 4EW",
       completed: false,
       deleted: false,
-      date: "20 hours ago",
+      date: "2 days ago",
     },
     {
       client_id: "002",
@@ -27,7 +27,7 @@ function Home() {
       phone: "0161 555 5555",
       completed: false,
       deleted: false,
-      date: "20 hours ago",
+      date: "2 days ago",
     },
     {
       client_id: "003",
@@ -37,7 +37,7 @@ function Home() {
       phone: "0161 555 5555",
       completed: true,
       deleted: false,
-      date: "20 hours ago",
+      date: "2 days ago",
     },
     {
       client_id: "004",
@@ -47,7 +47,7 @@ function Home() {
       phone: "0161 555 5555",
       completed: true,
       deleted: false,
-      date: "20 hours ago",
+      date: "2 days ago",
     },
     {
       client_id: "005",
@@ -57,7 +57,7 @@ function Home() {
       phone: "0161 555 5555",
       completed: true,
       deleted: false,
-      date: "20 hours ago",
+      date: "2 days ago",
     },
   ]);
 
@@ -117,48 +117,83 @@ function Home() {
   return (
     <div className="home_body">
       <AppHeader />
-      <div className="row">
-        {activeTasks.map((item) => (
-          <ListClients
-            key={item.client_id}
-            id={item.client_id}
-            full_name={item.full_name}
-            email={item.email}
-            phone={item.phone}
-            address={item.address}
-            deleteClient={deleteClient}
-            completeDelivery={completeDelivery}
-            createDate={item.date}
-          />
-        ))}
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <div className="card">
+              <div className="card-body">
+                <h3 className="text-center">Existing clients</h3>
+                <div className="row">
+                  {activeTasks.map((item) => (
+                    <ListClients
+                      key={item.client_id}
+                      id={item.client_id}
+                      full_name={item.full_name}
+                      email={item.email}
+                      phone={item.phone}
+                      address={item.address}
+                      deleteClient={deleteClient}
+                      completeDelivery={completeDelivery}
+                      createDate={item.date}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="Item__border" />
-        {completedTasks.map((item) => (
-          <ListClients
-            key={item.client_id}
-            id={item.client_id}
-            full_name={item.full_name}
-            email={item.email}
-            phone={item.phone}
-            address={item.address}
-            completed={item.completed}
-            deleteClient={deleteClient}
-            createDate={item.date}
-          />
-        ))}
+        <div className="row">
+          <div className="col">
+            <div className="card">
+              <div className="card-body">
+                <h3 className="text-center">
+                  Existing clients - completed deliveries
+                </h3>
+                <div className="row">
+                  {completedTasks.map((item) => (
+                    <ListClients
+                      key={item.client_id}
+                      id={item.client_id}
+                      full_name={item.full_name}
+                      email={item.email}
+                      phone={item.phone}
+                      address={item.address}
+                      completed={item.completed}
+                      deleteClient={deleteClient}
+                      createDate={item.date}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="Item__border" />
         <AddClient addClient={addClient} />
         <div className="Item__border" />
-        {allAvailableVolunteer.map((volunteer) => (
-          <ListVolunteers
-            key={volunteer.volunteer_id}
-            id={volunteer.volunteer_id}
-            full_name={volunteer.full_name}
-            email={volunteer.email}
-            phone={volunteer.phone}
-            deleteVolunteer={deleteVolunteer}
-            address={volunteer.address}
-          />
-        ))}
+        <div className="row">
+          <div className="col">
+            <div className="card">
+              <div className="card-body">
+                <h3 className="text-center">Existing volunteers</h3>
+                <div className="row">
+                  {allAvailableVolunteer.map((volunteer) => (
+                    <ListVolunteers
+                      key={volunteer.volunteer_id}
+                      id={volunteer.volunteer_id}
+                      full_name={volunteer.full_name}
+                      email={volunteer.email}
+                      phone={volunteer.phone}
+                      deleteVolunteer={deleteVolunteer}
+                      address={volunteer.address}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

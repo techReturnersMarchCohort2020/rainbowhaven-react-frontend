@@ -10,7 +10,7 @@ function ListClients(props) {
     props.completeDelivery(props.id);
   }
   return (
-    <div className="col-sm-12 col-md-6 col-lg-4">
+    <div className="col-sm-12 col-md-6 col-lg-3">
       <div className="Item__card card text-center m-2">
         <div className="card-body">
           <h4
@@ -44,11 +44,11 @@ function ListClients(props) {
         </div>
         <div className="card-footer text-muted bg-light">
           {props.completed ? (
-            <h4 className="text-muted complete">Delivering: done</h4>
+            <h4 className="text-muted complete">Delivery: done</h4>
           ) : (
             <div>
-              <h4 className="Item__card-title">Delivering: waiting...</h4>
-              <small>Created on {props.createDate}</small>
+              <h4 className="Item__card-title">Delivery: waiting...</h4>
+              <small>Created {props.createDate}</small>
             </div>
           )}
         </div>
