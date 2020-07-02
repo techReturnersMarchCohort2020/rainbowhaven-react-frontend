@@ -83,6 +83,17 @@ function Home() {
     const updatedClients = items.filter((item) => item.client_id !== client_id);
     setClients(updatedClients);
   }
+
+  function completeDelivery(client_id) {
+    const updatedClients = items.map((item) => {
+      if (item.client_id === client_id) {
+        item.completed = true;
+      }
+      return item;
+    });
+    setClients(updatedClients);
+  }
+
   function deleteVolunteer(volunteer_id) {
     const updatedVolunteer = volunteer.filter(
       (volunteer) => volunteer.volunteer_id !== volunteer_id
@@ -97,6 +108,7 @@ function Home() {
       phone: phone,
       address: address,
       completed: false,
+      // date: moment(),
     };
 
     const updatedClients = [...items, newClient];
@@ -114,8 +126,8 @@ function Home() {
             email={item.email}
             phone={item.phone}
             address={item.address}
-            completed={item.completed}
             deleteClient={deleteClient}
+            completeDelivery={completeDelivery}
             createDate={item.date}
           />
         ))}

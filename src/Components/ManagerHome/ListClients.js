@@ -7,7 +7,7 @@ function ListClients(props) {
   }
   function handleCompleteClick() {
     console.log("The complete button has been clicked!");
-    props.completeTask(props.id);
+    props.completeDelivery(props.id);
   }
   return (
     <div className="col-sm-12 col-md-6 col-lg-4">
