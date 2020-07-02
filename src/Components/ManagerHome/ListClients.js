@@ -1,9 +1,9 @@
 import React from "react";
 
-function TaskItem(props) {
+function ListClients(props) {
   function handleDeleteClick() {
     console.log("The delete button has been clicked!");
-    props.deleteTask(props.id);
+    props.deleteClient(props.id);
   }
   function handleCompleteClick() {
     console.log("The complete button has been clicked!");
@@ -66,4 +66,4 @@ function TaskItem(props) {
   );
 }
 
-export default TaskItem;
+export default ListClients;
