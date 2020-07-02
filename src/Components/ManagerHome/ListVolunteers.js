@@ -1,9 +1,9 @@
 import React from "react";
 
 function ListVolunteers(props) {
+  
   function handleDeleteClick() {
-    console.log("The delete button has been clicked!");
-    props.deleteVolunteer(props.id);
+    props.deleteVolunteer(props.email);
   }
 
   return (
@@ -14,6 +14,8 @@ function ListVolunteers(props) {
           <h4>Email: {props.email}</h4>
           <h4>Phone: {props.phone}</h4>
           <h4>Address: {props.address}</h4>
+          <h4>Postcode: {props.postcode}</h4>
+          <h4>Password: {props.password}</h4>
         </div>
         <div className="card-footer text-muted bg-light">
           <button
