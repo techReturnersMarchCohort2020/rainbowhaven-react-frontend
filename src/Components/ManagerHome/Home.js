@@ -4,7 +4,7 @@ import ListClients from "./ListClients";
 import ListVolunteers from "./ListVolunteers";
 import AddClient from "./AddClient";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-// import AppHeader from "./AppHeader";
+import AppHeader from "./AppHeader";
 import { v4 as uuidv4 } from "uuid";
 
 import "./Home.css";
@@ -139,7 +139,7 @@ function Home() {
   }
   return (
     <div className="home_body">
-      {/* <AppHeader /> */}
+      <AppHeader />
       <div className="container">
         <div className="row">
           <div className="col">

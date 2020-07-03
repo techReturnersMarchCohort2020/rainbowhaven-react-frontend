@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
-function AppHeader() {
+function VolunteerHeader() {
   return (
     <nav className="d-flex flex-row-reverse p-3">
       <Link to="/sign-in" className="nav-link">
@@ -15,4 +15,4 @@ function AppHeader() {
   );
 }
 
-export default AppHeader;
+export default VolunteerHeader;
