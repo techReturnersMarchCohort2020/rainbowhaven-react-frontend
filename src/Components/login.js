@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import './login.css';
 import { Button } from 'react-bootstrap';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 
 
 
@@ -20,22 +23,28 @@ function Login(props) {
           setPassword(event.target.value)
       }
 
+      const history = useHistory();
+
     function handleSubmitClick(event) {
         event.preventDefault()
         if (email === "kate@rainbowhaven.com" && password === "Rainbow1") {
-                    alert("Log in successful");
-                    setLoggedIn(true)
-                    //Add link that directs to manager homepage
+                    // alert("Log in successful");
+                    setLoggedIn(true);
+                    let path = `Home`; 
+                    history.push(path);
+                   
                 }
         else if (email === "johnjones@live.com" && password === "Lightning1") {
-                    alert("Log in successful");
+                    // alert("Log in successful");
                     setLoggedIn(true)
-                    //Add link that directs to volunteer homepage
+                    let path = `VolunteerHome`; 
+                    history.push(path);
                 }
         else if (email === "suziday@sky.com" && password === "Thunder1") {
-                    alert("Log in successful");
+                    // alert("Log in successful");
                     setLoggedIn(true)
-                    //Add volunteer if statement and link to volunteer page
+                    let path = `VolunteerHome`; 
+                    history.push(path);
                 }
         else {
                     alert("Incorrect log in details");
