@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./Components/login";
 import SignUp from "./Components/signup";
 import pickUpVolunteer from "./Components/pickUpVolunteer/pickUpVolunteer";
-// import volunteerMainPage from "./Components/volunteerMainPage/volunteerMainPage";
 import Home from "./Components/ManagerHome/Home";
 import Volunteer from "./Components/VolunteerHome/VolunteerHome";
 
@@ -59,15 +58,14 @@ function App() {
                 style={{ width: "1000px" }}
                 component={pickUpVolunteer}
               />
-              {/* <Route
-                path="/volunteer-Main-Page"
-                style={{ width: "1000px" }}
-                component={volunteerMainPage}
-              /> */}
-              <Route exact path="/manager" component={Home} />
-              <Route exact path="/volunteer" component={Volunteer} />
             </Switch>
           </div>
+        </div>
+        <div className="auth-wrapper-homes">
+          <Switch>
+            <Route exact path="/manager" component={Home} />
+            <Route exact path="/volunteer" component={Volunteer} />
+          </Switch>
         </div>
       </div>
     </Router>

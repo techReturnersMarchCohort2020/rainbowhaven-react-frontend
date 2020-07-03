@@ -43,7 +43,7 @@ function AddVolunteer(props) {
     <Fragment>
       <div className="container">
         <div className="row">
-          <div className="col-sm-12 col-md-6">
+          <div className="col">
             <div className="card p4">
               <div className="card-body">
                 <h3 className="text-center">Form for new Volunteer</h3>

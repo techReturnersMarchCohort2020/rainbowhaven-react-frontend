@@ -91,6 +91,7 @@ function VolunteerHome() {
                       completeDelivery={completeDelivery}
                     />
                   ))}
+                  <div className="Item__border" />
                 </div>
               </div>
             </div>

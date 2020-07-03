@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ListClients from "./ListClients";
 import ListVolunteers from "./ListVolunteers";
 import AddClient from "./AddClient";
-import AppHeader from "./AppHeader";
+// import AppHeader from "./AppHeader";
 import { v4 as uuidv4 } from "uuid";
 
 import "./Home.css";
@@ -138,7 +138,7 @@ function Home() {
   }
   return (
     <div className="home_body">
-      <AppHeader />
+      {/* <AppHeader /> */}
       <div className="container">
         <div className="row">
           <div className="col">
@@ -192,7 +192,14 @@ function Home() {
           </div>
         </div>
         <div className="Item__border" />
-        <AddClient addClient={addClient} />
+        <div className="row">
+          <div className="col-sm-12 col-md-6">
+            <AddClient addClient={addClient} />
+          </div>
+          <div className="col-sm-12 col-md-6">
+            <AddVolunteer addVolunteer={addVolunteer} />
+          </div>
+        </div>
         <div className="Item__border" />
 
         <div className="row">
@@ -219,7 +226,7 @@ function Home() {
           </div>
         </div>
         <div className="Item__border" />
-        <AddVolunteer addVolunteer={addVolunteer} />
+
         <div className="Item__border" />
       </div>
     </div>
