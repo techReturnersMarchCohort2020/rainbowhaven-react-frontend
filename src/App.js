@@ -5,8 +5,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./Components/login";
 import SignUp from "./Components/signup";
 import pickUpVolunteer from "./Components/pickUpVolunteer/pickUpVolunteer";
-import volunteerMainPage from "./Components/volunteerMainPage/volunteerMainPage";
+// import volunteerMainPage from "./Components/volunteerMainPage/volunteerMainPage";
 import Home from "./Components/ManagerHome/Home";
+import Volunteer from "./Components/VolunteerHome/VolunteerHome";
 
 function App() {
   return (
@@ -15,20 +16,34 @@ function App() {
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container">
             {/* <div className="collapse navbar-collapse" id="navbarTogglerDemo02"> */}
-              <ul className="nav navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link className="nav-link" to={"/sign-in"}> Log in</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to={"/sign-up"}>Register</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to={"/manager"}>Manager</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to={"/pickUp-Volunteer"}>pickUpVolunteer</Link>
-                </li>
-              </ul>
+            <ul className="nav navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to={"/sign-in"}>
+                  {" "}
+                  Log in
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/sign-up"}>
+                  Register
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/manager"}>
+                  For Manager
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/volunteer"}>
+                  For Volunteer
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/pickUp-Volunteer"}>
+                  pickUpVolunteer
+                </Link>
+              </li>
+            </ul>
             {/* </div> */}
           </div>
         </nav>
@@ -44,12 +59,13 @@ function App() {
                 style={{ width: "1000px" }}
                 component={pickUpVolunteer}
               />
-              <Route
+              {/* <Route
                 path="/volunteer-Main-Page"
                 style={{ width: "1000px" }}
                 component={volunteerMainPage}
-              />
+              /> */}
               <Route exact path="/manager" component={Home} />
+              <Route exact path="/volunteer" component={Volunteer} />
             </Switch>
           </div>
         </div>
