@@ -1,16 +1,16 @@
 import React from "react";
 
-function TaskItem(props) {
+function ListClients(props) {
   function handleDeleteClick() {
     console.log("The delete button has been clicked!");
-    props.deleteTask(props.id);
+    props.deleteClient(props.id);
   }
   function handleCompleteClick() {
     console.log("The complete button has been clicked!");
-    props.completeTask(props.id);
+    props.completeDelivery(props.id);
   }
   return (
-    <div className="col-sm-12 col-md-6 col-lg-4">
+    <div className="col-sm-12 col-md-6 col-lg-3">
       <div className="Item__card card text-center m-2">
         <div className="card-body">
           <h4
@@ -43,6 +43,17 @@ function TaskItem(props) {
           </h4>
         </div>
         <div className="card-footer text-muted bg-light">
+          {props.completed ? (
+            <h4 className="text-muted complete">Delivery: done</h4>
+          ) : (
+            <div>
+              <h4 className="Item__card-title">Delivery: waiting...</h4>
+              <small>Created {props.createDate}</small>
+            </div>
+          )}
+        </div>
+
+        <div className="card-footer text-muted bg-light">
           {!props.completed && (
             <button
               className="btn btn-sm mr-3 Item__button"
@@ -66,4 +77,4 @@ function TaskItem(props) {
   );
 }
 
-export default TaskItem;
+export default ListClients;
