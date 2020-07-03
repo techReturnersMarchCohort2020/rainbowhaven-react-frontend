@@ -1,13 +1,6 @@
-body {
-  color: #553e65;
-  font-weight: bolder;
-  background-color: #edf0f2;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.home_body {
-  margin-top: -650px;
+.volonteer_home {
+  margin-top: -600px;
+  width: 100%;
 }
 
 .Item__border {
