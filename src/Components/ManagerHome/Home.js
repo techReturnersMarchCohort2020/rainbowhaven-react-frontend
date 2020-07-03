@@ -4,13 +4,15 @@ import ListClients from "./ListClients";
 import ListVolunteers from "./ListVolunteers";
 import AddClient from "./AddClient";
 import AppHeader from "./AppHeader";
+import { v4 as uuidv4 } from 'uuid';
 
 import "./Home.css";
+import AddVolunteer from "./AddVolunteer";
 
 function Home() {
   const [items, setClients] = useState([
     {
-      client_id: "001",
+      client_id: uuidv4(),
       full_name: "Client Name1",
       email: "client1@gmail.com",
       phone: "0161 555 5555",
@@ -20,7 +22,7 @@ function Home() {
       date: "2 days ago",
     },
     {
-      client_id: "002",
+      client_id: uuidv4(),
       full_name: "Client Name2",
       email: "client2@gmail.com",
       address: "M4 4EW",
@@ -30,7 +32,7 @@ function Home() {
       date: "2 days ago",
     },
     {
-      client_id: "003",
+      client_id: uuidv4(),
       full_name: "Client Name3",
       email: "client3@gmail.com",
       address: "M4 4EW",
@@ -40,7 +42,7 @@ function Home() {
       date: "2 days ago",
     },
     {
-      client_id: "004",
+      client_id: uuidv4(),
       full_name: "Client Name4",
       email: "client4@gmail.com",
       address: "M4 4EW",
@@ -50,7 +52,7 @@ function Home() {
       date: "2 days ago",
     },
     {
-      client_id: "005",
+      client_id: uuidv4(),
       full_name: "Client Name5",
       email: "client5@gmail.com",
       address: "M4 4EW",
@@ -63,21 +65,30 @@ function Home() {
 
   const [volunteer, setVolunteers] = useState([
     {
-      volunteer_id: "001",
       full_name: "Volunteer Name1",
       email: "volunteer1@gmail.com",
       phone: "0161 555 5555",
-      address: "M4 4EW",
-      available: true,
+      address: "1 woodsley terrace",
+      postcode:"SK5 1BZ",
+      password: "12345",
+      
     },
+    {
+      full_name: "Volunteer Name2",
+      email: "volunteer2@gmail.com",
+      phone: "0161 555 5555",
+      address: "M4 4EW",
+      postcode:"SK5 1BZ",
+      password:"12345",
+      
+    }
+   
   ]);
 
   const activeTasks = items && items.filter((task) => !task.completed);
 
   const completedTasks = items && items.filter((task) => task.completed);
 
-  const allAvailableVolunteer =
-    volunteer && volunteer.filter((volunteer) => volunteer.available);
 
   function deleteClient(client_id) {
     const updatedClients = items.filter((item) => item.client_id !== client_id);
@@ -94,15 +105,14 @@ function Home() {
     setClients(updatedClients);
   }
 
-  function deleteVolunteer(volunteer_id) {
-    const updatedVolunteer = volunteer.filter(
-      (volunteer) => volunteer.volunteer_id !== volunteer_id
-    );
+  function deleteVolunteer(volunteer_email) {
+    const updatedVolunteer = volunteer.filter( (volunteer) => volunteer.email !== volunteer_email );
     setVolunteers(updatedVolunteer);
   }
 
   function addClient(full_name, email, phone, address) {
     const newClient = {
+      client_id: uuidv4(),
       full_name: full_name,
       email: email,
       phone: phone,
@@ -113,6 +123,21 @@ function Home() {
 
     const updatedClients = [...items, newClient];
     setClients(updatedClients);
+  }
+
+  function addVolunteer(full_name,email,phone, address,postcode,password) {
+    const newVolunteer = {
+      full_name: full_name,
+      email: email,
+      phone:phone,
+      address: address,
+      postcode: postcode,
+      password:password,
+     
+    };
+
+    const updatedVolunteer = [...volunteer, newVolunteer];
+    setVolunteers(updatedVolunteer);
   }
   return (
     <div className="home_body">
@@ -172,28 +197,31 @@ function Home() {
         <div className="Item__border" />
         <AddClient addClient={addClient} />
         <div className="Item__border" />
+        
         <div className="row">
           <div className="col">
             <div className="card">
               <div className="card-body">
                 <h3 className="text-center">Existing volunteers</h3>
                 <div className="row">
-                  {allAvailableVolunteer.map((volunteer) => (
+                  {volunteer.map( volunteer => 
                     <ListVolunteers
-                      key={volunteer.volunteer_id}
-                      id={volunteer.volunteer_id}
+                      key={volunteer.volunteer_email}
                       full_name={volunteer.full_name}
                       email={volunteer.email}
                       phone={volunteer.phone}
-                      deleteVolunteer={deleteVolunteer}
                       address={volunteer.address}
-                    />
-                  ))}
+                      postcode={volunteer.postcode}
+                      password={volunteer.password}
+                      deleteVolunteer={deleteVolunteer} />)}
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div className="Item__border" />
+        <AddVolunteer addVolunteer={addVolunteer} />
+        <div className="Item__border" />
       </div>
     </div>
   );

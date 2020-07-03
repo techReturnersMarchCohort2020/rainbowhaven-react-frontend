@@ -12,32 +12,24 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+        <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container">
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-              <ul className="navbar-nav ml-auto">
+            {/* <div className="collapse navbar-collapse" id="navbarTogglerDemo02"> */}
+              <ul className="nav navbar-nav ml-auto">
                 <li className="nav-item">
-                  <Link className="nav-link" to={"/sign-in"}>
-                    Log in
-                  </Link>
+                  <Link className="nav-link" to={"/sign-in"}> Log in</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={"/sign-up"}>
-                    Register
-                  </Link>
+                  <Link className="nav-link" to={"/sign-up"}>Register</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={"/manager"}>
-                    Manager
-                  </Link>
+                  <Link className="nav-link" to={"/manager"}>Manager</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={"/pickUp-Volunteer"}>
-                    pickUpVolunteer
-                  </Link>
+                  <Link className="nav-link" to={"/pickUp-Volunteer"}>pickUpVolunteer</Link>
                 </li>
               </ul>
-            </div>
+            {/* </div> */}
           </div>
         </nav>
 
