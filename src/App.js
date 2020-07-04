@@ -7,6 +7,7 @@ import SignUp from "./Components/signup";
 import pickUpVolunteer from "./Components/pickUpVolunteer/pickUpVolunteer";
 import Home from "./Components/ManagerHome/Home";
 import Volunteer from "./Components/VolunteerHome/VolunteerHome";
+import VolunteerHome from "./Components/VolunteerHome/VolunteerHome";
 
 function App() {
   return (
@@ -53,6 +54,8 @@ function App() {
               <Route exact path="/" component={Login} />
               <Route path="/sign-in" component={Login} />
               <Route path="/sign-up" component={SignUp} />
+              <Route path="/Home" component={Home} />
+              <Route path="/VolunteerHome" component={VolunteerHome} />
               <Route
                 path="/pickUp-Volunteer"
                 style={{ width: "1000px" }}
