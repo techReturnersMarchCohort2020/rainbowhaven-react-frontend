@@ -66,20 +66,24 @@ function Home() {
 
   const [volunteer, setVolunteers] = useState([
     {
+      volunteer_Id: uuidv4(),
       full_name: "Volunteer Name1",
       email: "volunteer1@gmail.com",
       phone: "0161 555 5555",
       address: "1 woodsley terrace",
       postcode: "SK5 1BZ",
       password: "12345",
+      zone:"1",
     },
     {
+      volunteer_Id: uuidv4(),
       full_name: "Volunteer Name2",
       email: "volunteer2@gmail.com",
       phone: "0161 555 5555",
       address: "M4 4EW",
       postcode: "SK5 1BZ",
       password: "12345",
+      zone: "2",
     },
   ]);
 
@@ -102,9 +106,9 @@ function Home() {
     setClients(updatedClients);
   }
 
-  function deleteVolunteer(volunteer_email) {
+  function deleteVolunteer(volunteer_Id) {
     const updatedVolunteer = volunteer.filter(
-      (volunteer) => volunteer.email !== volunteer_email
+      (volunteer) => volunteer.volunteer_Id !== volunteer_Id
     );
     setVolunteers(updatedVolunteer);
   }
@@ -124,14 +128,16 @@ function Home() {
     setClients(updatedClients);
   }
 
-  function addVolunteer(full_name, email, phone, address, postcode, password) {
+  function addVolunteer(full_name, email, phone, address, postcode, password,zone) {
     const newVolunteer = {
+      volunteer_Id: uuidv4(),
       full_name: full_name,
       email: email,
       phone: phone,
       address: address,
       postcode: postcode,
       password: password,
+      zone:zone,
     };
 
     const updatedVolunteer = [...volunteer, newVolunteer];
@@ -211,13 +217,15 @@ function Home() {
                 <div className="row">
                   {volunteer.map((volunteer) => (
                     <ListVolunteers
-                      key={volunteer.volunteer_email}
+                      key={volunteer.volunteer_Id}
+                      volunteer_Id={volunteer.volunteer_Id}
                       full_name={volunteer.full_name}
                       email={volunteer.email}
                       phone={volunteer.phone}
                       address={volunteer.address}
                       postcode={volunteer.postcode}
                       password={volunteer.password}
+                      zone={volunteer.zone}
                       deleteVolunteer={deleteVolunteer}
                     />
                   ))}
