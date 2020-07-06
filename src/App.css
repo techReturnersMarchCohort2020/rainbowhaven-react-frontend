@@ -19,9 +19,10 @@
 
 .App {
   background-image: url(./images/bigBalloon.jpg);
-  height: 100%;
-  background-position: center;
+  min-height: 100%;
   background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center;
   background-size: cover;
 }
 

@@ -7,6 +7,7 @@ function AddVolunteer(props) {
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
   const [postcode, setPostcode] = useState("");
+  const [zone, setZone] = useState("");
 
   function handleFullNameChange(event) {
     setFullName(event.target.value);
@@ -30,14 +31,19 @@ function AddVolunteer(props) {
     setPostcode(event.target.value);
   }
 
+  function handleZoneChange(event) {
+    setZone(event.target.value);
+  }
+
   function handleAddVolunteerClick(event) {
     event.preventDefault();
-    props.addVolunteer(full_name, email, phone, address, postcode, password);
+    props.addVolunteer(full_name, email, phone, address, postcode, password, zone);
     setFullName("");
     setEmail("");
     setAddress("");
     setPassword("");
     setPostcode("");
+    setZone("");
   }
   return (
     <Fragment>
@@ -46,7 +52,7 @@ function AddVolunteer(props) {
           <div className="col">
             <div className="card p4">
               <div className="card-body">
-                <h3 className="text-center">Form for new Volunteer</h3>
+                <h3 className="text-center">Register new volunteer</h3>
                 <hr />
                 <div className="row">
                   <div className="col-md-6">
@@ -113,6 +119,17 @@ function AddVolunteer(props) {
                         placeholder="Password"
                         onChange={handlePasswordChange}
                         value={password}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Zone"
+                        onChange={handleZoneChange}
+                        value={zone}
                       />
                     </div>
                   </div>

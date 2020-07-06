@@ -5,6 +5,7 @@ function AddClient(props) {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [zone, setZone] = useState("");
 
   function handleFullNameChange(event) {
     setFullName(event.target.value);
@@ -20,13 +21,18 @@ function AddClient(props) {
     setAddress(event.target.value);
   }
 
+  function handleZoneChange(event) {
+    setZone(event.target.value);
+  }
+
   function handleAddClientClick(e) {
     e.preventDefault();
-    props.addClient(full_name, email, phone, address);
+    props.addClient(full_name, email, phone, address, zone);
     setFullName("");
     setEmail("");
     setPhone("");
     setAddress("");
+    setZone("")
   }
 
   return (
@@ -36,7 +42,7 @@ function AddClient(props) {
           <div className="col">
             <div className="card p4">
               <div className="card-body">
-                <h3 className="text-center">Form for new clients</h3>
+                <h3 className="text-center">Register new client</h3>
                 <hr />
                 <div className="row">
                   <div className="col-md-6">
@@ -84,7 +90,20 @@ function AddClient(props) {
                       />
                     </div>
                   </div>
+
+                  <div className="col-md-6">
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Zone"
+                        onChange={handleZoneChange}
+                        value={zone}
+                      />
+                    </div>
+                  </div>
                 </div>
+                <br></br>
 
                 <div className="col-md-12">
                   <div className="form-group">
