@@ -5,6 +5,8 @@ function AddClient(props) {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [postcode, setPostcode] = useState("");
+  const [zone, setZone]= useState("");
 
   function handleFullNameChange(event) {
     setFullName(event.target.value);
@@ -19,14 +21,23 @@ function AddClient(props) {
   function handleAddressChange(event) {
     setAddress(event.target.value);
   }
+  
+  function handlePostcodeChange(event) {
+    setPostcode(event.target.value);
+  }
+  function handleZoneChange(event) {
+    setZone(event.target.value);
+  }
 
   function handleAddClientClick(e) {
     e.preventDefault();
-    props.addClient(full_name, email, phone, address);
+    props.addClient(full_name, email, phone, address,postcode,zone);
     setFullName("");
     setEmail("");
     setPhone("");
     setAddress("");
+    setPostcode("");
+    setZone("");
   }
 
   return (
@@ -81,6 +92,28 @@ function AddClient(props) {
                         placeholder="Address"
                         onChange={handleAddressChange}
                         value={address}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Postcode"
+                        onChange={handlePostcodeChange}
+                        value={postcode}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="form-group">
+                      <input
+                        type="email"
+                        className="form-control"
+                        placeholder="Zone"
+                        onChange={handleZoneChange}
+                        value={zone}
                       />
                     </div>
                   </div>
