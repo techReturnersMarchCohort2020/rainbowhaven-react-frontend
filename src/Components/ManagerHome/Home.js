@@ -5,6 +5,7 @@ import ListVolunteers from "./ListVolunteers";
 import AddClient from "./AddClient";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AppHeader from "./AppHeader";
+import moment from "moment";
 import { v4 as uuidv4 } from "uuid";
 
 import "./Home.css";
@@ -18,23 +19,23 @@ function Home() {
       email: "client1@gmail.com",
       phone: "0161 555 5555",
       address: " 1 hyde terrace",
-      postcode:"M4 4EW",
+      postcode: "M4 4EW",
       completed: false,
       // deleted: false,
       date: "2 days ago",
-      zone:"2",
+      zone: "2",
     },
     {
       client_id: uuidv4(),
       full_name: "Client Name2",
       email: "client2@gmail.com",
       address: "3 woodhay street",
-      postcode:"M4 4EW",
+      postcode: "M4 4EW",
       phone: "0161 555 5555",
       completed: false,
       // deleted: false,
       date: "2 days ago",
-      zone:"1",
+      zone: "1",
     },
     {
       client_id: uuidv4(),
@@ -46,32 +47,31 @@ function Home() {
       completed: true,
       // deleted: false,
       date: "2 days ago",
-      zone:"2",
+      zone: "2",
     },
     {
       client_id: uuidv4(),
       full_name: "Client Name4",
       email: "client4@gmail.com",
       address: "2 roundhay",
-      postcode:"M4 4EW",
+      postcode: "M4 4EW",
       phone: "0161 555 5555",
       completed: true,
       // deleted: false,
       date: "2 days ago",
-      zone:"1",
+      zone: "1",
     },
     {
       client_id: uuidv4(),
       full_name: "Client Name5",
       email: "client5@gmail.com",
       address: "M4 4EW",
-      postcode:"M4 4EW",
+      postcode: "M4 4EW",
       phone: "0161 555 5555",
       completed: true,
       // deleted: false,
       date: "2 days ago",
-      zone:"1",
-
+      zone: "1",
     },
   ]);
 
@@ -124,7 +124,7 @@ function Home() {
     setVolunteers(updatedVolunteer);
   }
 
-  function addClient(full_name, email, phone, address,postcode,zone) {
+  function addClient(full_name, email, phone, address, postcode, zone) {
     const newClient = {
       client_id: uuidv4(),
       full_name: full_name,
@@ -133,15 +133,23 @@ function Home() {
       address: address,
       postcode: postcode,
       completed: false,
-      zone:zone,
-      // date: moment(),
+      zone: zone,
+      date: moment(),
     };
 
     const updatedClients = [...items, newClient];
     setClients(updatedClients);
   }
 
-  function addVolunteer(full_name, email, phone, address, postcode, password, zone) {
+  function addVolunteer(
+    full_name,
+    email,
+    phone,
+    address,
+    postcode,
+    password,
+    zone
+  ) {
     const newVolunteer = {
       volunteer_Id: uuidv4(),
       full_name: full_name,
