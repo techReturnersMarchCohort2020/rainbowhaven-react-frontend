@@ -41,6 +41,20 @@ function ListClients(props) {
           >
             Address: {props.address}
           </h4>
+          <h4
+            className={`${
+              props.completed ? "text-muted complete" : "Item__card-title"
+            } card-title`}
+          >
+            Postcode: {props.postcode}
+          </h4>
+          <h4
+            className={`${
+              props.completed ? "text-muted complete" : "Item__card-title"
+            } card-title`}
+          >
+            Zone: {props.zone}
+          </h4>
         </div>
         <div className="card-footer text-muted bg-light">
           {props.completed ? (
