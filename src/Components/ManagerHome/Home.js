@@ -17,69 +17,84 @@ function Home() {
       full_name: "Client Name1",
       email: "client1@gmail.com",
       phone: "0161 555 5555",
-      address: "M4 4EW",
+      address: " 1 hyde terrace",
+      postcode:"M4 4EW",
       completed: false,
-      deleted: false,
+      // deleted: false,
       date: "2 days ago",
+      zone:"2",
     },
     {
       client_id: uuidv4(),
       full_name: "Client Name2",
       email: "client2@gmail.com",
-      address: "M4 4EW",
+      address: "3 woodhay street",
+      postcode:"M4 4EW",
       phone: "0161 555 5555",
       completed: false,
-      deleted: false,
+      // deleted: false,
       date: "2 days ago",
+      zone:"1",
     },
     {
       client_id: uuidv4(),
       full_name: "Client Name3",
       email: "client3@gmail.com",
-      address: "M4 4EW",
+      address: "2 woodlane",
+      postcode: "M4 4EW",
       phone: "0161 555 5555",
       completed: true,
-      deleted: false,
+      // deleted: false,
       date: "2 days ago",
+      zone:"2",
     },
     {
       client_id: uuidv4(),
       full_name: "Client Name4",
       email: "client4@gmail.com",
-      address: "M4 4EW",
+      address: "2 roundhay",
+      postcode:"M4 4EW",
       phone: "0161 555 5555",
       completed: true,
-      deleted: false,
+      // deleted: false,
       date: "2 days ago",
+      zone:"1",
     },
     {
       client_id: uuidv4(),
       full_name: "Client Name5",
       email: "client5@gmail.com",
       address: "M4 4EW",
+      postcode:"M4 4EW",
       phone: "0161 555 5555",
       completed: true,
-      deleted: false,
+      // deleted: false,
       date: "2 days ago",
+      zone:"1",
+
     },
   ]);
 
   const [volunteer, setVolunteers] = useState([
     {
+      volunteer_Id: uuidv4(),
       full_name: "Volunteer Name1",
       email: "volunteer1@gmail.com",
       phone: "0161 555 5555",
       address: "1 woodsley terrace",
       postcode: "SK5 1BZ",
       password: "12345",
+      zone: "1",
     },
     {
+      volunteer_Id: uuidv4(),
       full_name: "Volunteer Name2",
       email: "volunteer2@gmail.com",
       phone: "0161 555 5555",
       address: "M4 4EW",
       postcode: "SK5 1BZ",
       password: "12345",
+      zone: "2",
     },
   ]);
 
@@ -102,21 +117,23 @@ function Home() {
     setClients(updatedClients);
   }
 
-  function deleteVolunteer(volunteer_email) {
+  function deleteVolunteer(volunteer_Id) {
     const updatedVolunteer = volunteer.filter(
-      (volunteer) => volunteer.email !== volunteer_email
+      (volunteer) => volunteer.volunteer_Id !== volunteer_Id
     );
     setVolunteers(updatedVolunteer);
   }
 
-  function addClient(full_name, email, phone, address) {
+  function addClient(full_name, email, phone, address,postcode,zone) {
     const newClient = {
       client_id: uuidv4(),
       full_name: full_name,
       email: email,
       phone: phone,
       address: address,
+      postcode: postcode,
       completed: false,
+      zone:zone,
       // date: moment(),
     };
 
@@ -124,14 +141,16 @@ function Home() {
     setClients(updatedClients);
   }
 
-  function addVolunteer(full_name, email, phone, address, postcode, password) {
+  function addVolunteer(full_name, email, phone, address, postcode, password, zone) {
     const newVolunteer = {
+      volunteer_Id: uuidv4(),
       full_name: full_name,
       email: email,
       phone: phone,
       address: address,
       postcode: postcode,
       password: password,
+      zone: zone,
     };
 
     const updatedVolunteer = [...volunteer, newVolunteer];
@@ -155,6 +174,8 @@ function Home() {
                       email={item.email}
                       phone={item.phone}
                       address={item.address}
+                      postcode={item.postcode}
+                      zone={item.zone}
                       deleteClient={deleteClient}
                       completeDelivery={completeDelivery}
                       createDate={item.date}
@@ -182,6 +203,8 @@ function Home() {
                       email={item.email}
                       phone={item.phone}
                       address={item.address}
+                      postcode={item.postcode}
+                      zone={item.zone}
                       completed={item.completed}
                       deleteClient={deleteClient}
                       createDate={item.date}
@@ -211,13 +234,15 @@ function Home() {
                 <div className="row">
                   {volunteer.map((volunteer) => (
                     <ListVolunteers
-                      key={volunteer.volunteer_email}
+                      key={volunteer.volunteer_Id}
+                      volunteer_Id={volunteer.volunteer_Id}
                       full_name={volunteer.full_name}
                       email={volunteer.email}
                       phone={volunteer.phone}
                       address={volunteer.address}
                       postcode={volunteer.postcode}
                       password={volunteer.password}
+                      zone={volunteer.zone}
                       deleteVolunteer={deleteVolunteer}
                     />
                   ))}
