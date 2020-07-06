@@ -19,7 +19,7 @@ function ListClients(props) {
           <h4 className="Item__card-title">Address: {props.address}</h4>
         </div>
         <div className="card-footer text-muted bg-light">
-          <h4 className="Item__card-title">Delivery: waiting...</h4>
+          <h4 className="Item__card-title">Status: Awaiting delivery</h4>
           <small>Created {props.createDate}</small>
         </div>
 
@@ -33,7 +33,7 @@ function ListClients(props) {
           </button>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 

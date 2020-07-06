@@ -29,6 +29,10 @@ function AddClient(props) {
     setZone(event.target.value);
   }
 
+  function handleZoneChange(event) {
+    setZone(event.target.value);
+  }
+
   function handleAddClientClick(e) {
     e.preventDefault();
     props.addClient(full_name, email, phone, address,postcode,zone);
@@ -47,7 +51,7 @@ function AddClient(props) {
           <div className="col">
             <div className="card p4">
               <div className="card-body">
-                <h3 className="text-center">Form for new clients</h3>
+                <h3 className="text-center">Register new client</h3>
                 <hr />
                 <div className="row">
                   <div className="col-md-6">
@@ -118,6 +122,7 @@ function AddClient(props) {
                     </div>
                   </div>
                 </div>
+                <br></br>
 
                 <div className="col-md-12">
                   <div className="form-group">

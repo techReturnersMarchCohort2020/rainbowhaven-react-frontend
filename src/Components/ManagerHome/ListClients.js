@@ -58,10 +58,10 @@ function ListClients(props) {
         </div>
         <div className="card-footer text-muted bg-light">
           {props.completed ? (
-            <h4 className="text-muted complete">Delivery: done</h4>
+            <h4 className="text-muted complete">Status: Delivered</h4>
           ) : (
             <div>
-              <h4 className="Item__card-title">Delivery: waiting...</h4>
+              <h4 className="Item__card-title">Status: Awaiting delivery</h4>
               <small>Created {props.createDate}</small>
             </div>
           )}
