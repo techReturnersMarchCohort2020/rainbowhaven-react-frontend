@@ -21,7 +21,6 @@ function Home() {
       address: " 1 hyde terrace",
       postcode: "M4 4EW",
       completed: false,
-      // deleted: false,
       date: "2 days ago",
       zone: "2",
     },
@@ -33,7 +32,6 @@ function Home() {
       postcode: "M4 4EW",
       phone: "0161 555 5555",
       completed: false,
-      // deleted: false,
       date: "2 days ago",
       zone: "1",
     },
@@ -45,7 +43,6 @@ function Home() {
       postcode: "M4 4EW",
       phone: "0161 555 5555",
       completed: true,
-      // deleted: false,
       date: "2 days ago",
       zone: "2",
     },
@@ -57,7 +54,6 @@ function Home() {
       postcode: "M4 4EW",
       phone: "0161 555 5555",
       completed: true,
-      // deleted: false,
       date: "2 days ago",
       zone: "1",
     },
@@ -69,7 +65,6 @@ function Home() {
       postcode: "M4 4EW",
       phone: "0161 555 5555",
       completed: true,
-      // deleted: false,
       date: "2 days ago",
       zone: "1",
     },
@@ -77,7 +72,7 @@ function Home() {
 
   const [volunteer, setVolunteers] = useState([
     {
-      volunteer_id: uuidv4(),
+      volunteer_Id: uuidv4(),
       full_name: "Volunteer Name1",
       email: "volunteer1@gmail.com",
       phone: "0161 555 5555",
@@ -87,7 +82,7 @@ function Home() {
       zone: "1",
     },
     {
-      volunteer_id: uuidv4(),
+      volunteer_Id: uuidv4(),
       full_name: "Volunteer Name2",
       email: "volunteer2@gmail.com",
       phone: "0161 555 5555",
@@ -117,9 +112,9 @@ function Home() {
     setClients(updatedClients);
   }
 
-  function deleteVolunteer(volunteer_id) {
+  function deleteVolunteer(volunteer_Id) {
     const updatedVolunteer = volunteer.filter(
-      (volunteer) => volunteer.volunteer_Id !== volunteer_id
+      (volunteer) => volunteer.volunteer_Id !== volunteer_Id
     );
     setVolunteers(updatedVolunteer);
   }
@@ -151,7 +146,7 @@ function Home() {
     zone
   ) {
     const newVolunteer = {
-      volunteer_id: uuidv4(),
+      volunteer_Id: uuidv4(),
       full_name: full_name,
       email: email,
       phone: phone,
@@ -242,8 +237,8 @@ function Home() {
                 <div className="row">
                   {volunteer.map((volunteer) => (
                     <ListVolunteers
-                      key={volunteer.volunteer_id}
-                      volunteer_id={volunteer.volunteer_id}
+                      key={volunteer.volunteer_Id}
+                      volunteer_Id={volunteer.volunteer_Id}
                       full_name={volunteer.full_name}
                       email={volunteer.email}
                       phone={volunteer.phone}
