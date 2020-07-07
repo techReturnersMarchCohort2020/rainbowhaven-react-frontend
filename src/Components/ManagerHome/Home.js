@@ -18,28 +18,6 @@ function Home() {
   // const [items, setClients] = useState([
   //   {
   //     client_id: uuidv4(),
-  //     full_name: "Client Name1",
-  //     email: "client1@gmail.com",
-  //     phone: "0161 555 5555",
-  //     address: " 1 hyde terrace",
-  //     postcode: "M4 4EW",
-  //     completed: false,
-  //     date: "2 days ago",
-  //     zone: "2",
-  //   },
-  //   {
-  //     client_id: uuidv4(),
-  //     full_name: "Client Name2",
-  //     email: "client2@gmail.com",
-  //     address: "3 woodhay street",
-  //     postcode: "M4 4EW",
-  //     phone: "0161 555 5555",
-  //     completed: false,
-  //     date: "2 days ago",
-  //     zone: "1",
-  //   },
-  //   {
-  //     client_id: uuidv4(),
   //     full_name: "Client Name3",
   //     email: "client3@gmail.com",
   //     address: "2 woodlane",
@@ -48,17 +26,6 @@ function Home() {
   //     completed: true,
   //     date: "2 days ago",
   //     zone: "2",
-  //   },
-  //   {
-  //     client_id: uuidv4(),
-  //     full_name: "Client Name4",
-  //     email: "client4@gmail.com",
-  //     address: "2 roundhay",
-  //     postcode: "M4 4EW",
-  //     phone: "0161 555 5555",
-  //     completed: true,
-  //     date: "2 days ago",
-  //     zone: "1",
   //   },
   //   {
   //     client_id: uuidv4(),
@@ -73,7 +40,7 @@ function Home() {
   //   },
   // ]);
 
-  const [volunteer,setVolunteers] = useState([]);
+  const [volunteer, setVolunteers] = useState([]);
   // const [volunteer, setVolunteers] = useState([
   //   {
   //     volunteer_Id: uuidv4(),
@@ -138,23 +105,20 @@ function Home() {
 
   const completedTasks = items && items.filter((task) => task.completed);
 
-  /////////////////////////////////// DELETE client //////////////////////
+  /////////////////////////////////// DELETE client //////////////////////////////////
   function deleteClient(client_id) {
     axios
-    .delete(`https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items/${client_id}`)
-    .then(response => {
-      const updatedclients = items.filter(client => client.client_id!== client_id);
-      setClients(updatedclients);
-    })
-    .catch((error) => {
-      console.log("Could not delete client", error);
-    }); 
+      .delete(`https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items/${client_id}`)
+      .then(response => {
+        const updatedclients = items.filter(client => client.client_id !== client_id);
+        setClients(updatedclients);
+      })
+      .catch((error) => {
+        console.log("Could not delete client", error);
+      });
   }
-  // function deleteClient(client_id) {
-  //   const updatedClients = items.filter((item) => item.client_id !== client_id);
-  //   setClients(updatedClients);
-  // }
 
+/////////////////////////////// PUT (Update client) !!??  ///////////////////////////////
   function completeDelivery(client_id) {
     const updatedClients = items.map((item) => {
       if (item.client_id === client_id) {
@@ -164,23 +128,20 @@ function Home() {
     });
     setClients(updatedClients);
   }
-/////////////////////////////////////  DELETE volunteer ///////////////////////////////
-function deleteVolunteer(volunteer_Id) {
-  axios
-  .delete(`https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/volunteer/${volunteer_Id}`)
-  .then(response => {
-    const updatevolunteers = volunteer.filter(volunteer => volunteer.volunteer_Id!== volunteer_Id);
-    setVolunteers(updatevolunteers);
-  })
-  .catch((error) => {
-    console.log("Could not delete volunteer", error);
-  }); 
-    // const updatedVolunteer = volunteer.filter(
-    //   (volunteer) => volunteer.volunteer_Id !== volunteer_Id
-    // );
-    // setVolunteers(updatedVolunteer);
-  }
+  /////////////////////////////////////  DELETE volunteer ///////////////////////////////
+  function deleteVolunteer(volunteer_Id) {
+    axios
+      .delete(`https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/volunteer/${volunteer_Id}`)
+      .then(response => {
+        const updatevolunteers = volunteer.filter(volunteer => volunteer.volunteer_Id !== volunteer_Id);
+        setVolunteers(updatevolunteers);
+      })
+      .catch((error) => {
+        console.log("Could not delete volunteer", error);
+      });
 
+  }
+  /////////////////////////////////////// Post (add) a client ///////////////////////////////////
   function addClient(full_name, email, phone, address, postcode, zone) {
     const newClient = {
       client_id: uuidv4(),
@@ -193,22 +154,24 @@ function deleteVolunteer(volunteer_Id) {
       zone: zone,
       date: moment(),
     };
-
-    const updatedClients = [...items, newClient];
-    setClients(updatedClients);
+    axios
+      .post("https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items", newClient)
+      .then(
+        (response) => {
+          newClient.client_id = response.data.task[0].client_id;
+          const updatedTask = [...items, newClient];
+          setClients(updatedTask);
+        }
+      )
+      .catch((error) => {
+        console.log("Error adding a client", error)
+      })
   }
 
-  function addVolunteer(
-    full_name,
-    email,
-    phone,
-    address,
-    postcode,
-    password,
-    zone
-  ) {
+  /////////////////////////////////////// Post (add) a volunteer  ///////////////////////////////////
+  function addVolunteer(full_name, email, phone, address, postcode, password, zone) {
     const newVolunteer = {
-      volunteer_Id: uuidv4(),
+      // volunteer_Id: uuidv4(),
       full_name: full_name,
       email: email,
       phone: phone,
@@ -217,10 +180,20 @@ function deleteVolunteer(volunteer_Id) {
       password: password,
       zone: zone,
     };
-
-    const updatedVolunteer = [...volunteer, newVolunteer];
-    setVolunteers(updatedVolunteer);
+    axios
+      .post("https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/volunteer", newVolunteer)
+      .then(
+        (response) => {
+          newVolunteer.volunteer_id = response.data.task[0].volunteer_Id;
+          const updatedTask = [...volunteer, newVolunteer];
+          setVolunteers(updatedTask);
+        }
+      )
+      .catch((error) => {
+        console.log("Error adding a volunteer", error)
+      })
   }
+
   return (
     <div className="home_body">
       <AppHeader />
