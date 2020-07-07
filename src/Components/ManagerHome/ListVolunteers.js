@@ -1,9 +1,8 @@
 import React from "react";
 
 function ListVolunteers(props) {
-
   function handleDeleteClick() {
-    props.deleteVolunteer(props.volunteer_Id);
+    props.deleteVolunteer(props.volunteer_id);
   }
 
   return (

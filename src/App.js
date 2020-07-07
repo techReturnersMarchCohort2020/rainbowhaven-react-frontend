@@ -27,21 +27,21 @@ function App() {
                   Register
                 </Link>
               </li>
-              {/* <li className="nav-item">
+              <li className="nav-item">
                 <Link className="nav-link" to={"/manager"}>
                   For Manager
                 </Link>
-              </li> */}
-              {/* <li className="nav-item">
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to={"/volunteer"}>
                   For Volunteer
                 </Link>
-              </li> */}
-              {/* <li className="nav-item">
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to={"/pickUp-Volunteer"}>
                   pickUpVolunteer
                 </Link>
-              </li> */}
+              </li>
             </ul>
             {/* </div> */}
           </div>

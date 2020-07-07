@@ -77,7 +77,7 @@ function Home() {
 
   const [volunteer, setVolunteers] = useState([
     {
-      volunteer_Id: uuidv4(),
+      volunteer_id: uuidv4(),
       full_name: "Volunteer Name1",
       email: "volunteer1@gmail.com",
       phone: "0161 555 5555",
@@ -87,7 +87,7 @@ function Home() {
       zone: "1",
     },
     {
-      volunteer_Id: uuidv4(),
+      volunteer_id: uuidv4(),
       full_name: "Volunteer Name2",
       email: "volunteer2@gmail.com",
       phone: "0161 555 5555",
@@ -117,9 +117,9 @@ function Home() {
     setClients(updatedClients);
   }
 
-  function deleteVolunteer(volunteer_Id) {
+  function deleteVolunteer(volunteer_id) {
     const updatedVolunteer = volunteer.filter(
-      (volunteer) => volunteer.volunteer_Id !== volunteer_Id
+      (volunteer) => volunteer.volunteer_Id !== volunteer_id
     );
     setVolunteers(updatedVolunteer);
   }
@@ -151,7 +151,7 @@ function Home() {
     zone
   ) {
     const newVolunteer = {
-      volunteer_Id: uuidv4(),
+      volunteer_id: uuidv4(),
       full_name: full_name,
       email: email,
       phone: phone,
@@ -242,8 +242,8 @@ function Home() {
                 <div className="row">
                   {volunteer.map((volunteer) => (
                     <ListVolunteers
-                      key={volunteer.volunteer_Id}
-                      volunteer_Id={volunteer.volunteer_Id}
+                      key={volunteer.volunteer_id}
+                      volunteer_id={volunteer.volunteer_id}
                       full_name={volunteer.full_name}
                       email={volunteer.email}
                       phone={volunteer.phone}
