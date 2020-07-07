@@ -98,7 +98,7 @@ function Home() {
   // ]);
 
 
-  /////////////////////////////// Get volunteer  ////////////////////////////////
+  /////////////////////////////   Get volunteer  ///////////////////////////////
   useEffect(() => {
     axios
       .get('https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/volunteers')
@@ -133,15 +133,27 @@ function Home() {
       )
       .finally(() => console.log("I am done"))
   }, []);
-//////////////////////////////////////////////////////////////////////////////////
+
   const activeTasks = items && items.filter((task) => !task.completed);
 
   const completedTasks = items && items.filter((task) => task.completed);
 
+  /////////////////////////////////// DELETE client //////////////////////
   function deleteClient(client_id) {
-    const updatedClients = items.filter((item) => item.client_id !== client_id);
-    setClients(updatedClients);
+    axios
+    .delete(`https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items/${client_id}`)
+    .then(response => {
+      const updatedclients = items.filter(client => client.client_id!== client_id);
+      setClients(updatedclients);
+    })
+    .catch((error) => {
+      console.log("Could not delete client", error);
+    }); 
   }
+  // function deleteClient(client_id) {
+  //   const updatedClients = items.filter((item) => item.client_id !== client_id);
+  //   setClients(updatedClients);
+  // }
 
   function completeDelivery(client_id) {
     const updatedClients = items.map((item) => {
@@ -152,12 +164,21 @@ function Home() {
     });
     setClients(updatedClients);
   }
-
-  function deleteVolunteer(volunteer_Id) {
-    const updatedVolunteer = volunteer.filter(
-      (volunteer) => volunteer.volunteer_Id !== volunteer_Id
-    );
-    setVolunteers(updatedVolunteer);
+/////////////////////////////////////  DELETE volunteer ///////////////////////////////
+function deleteVolunteer(volunteer_Id) {
+  axios
+  .delete(`https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/volunteer/${volunteer_Id}`)
+  .then(response => {
+    const updatevolunteers = volunteer.filter(volunteer => volunteer.volunteer_Id!== volunteer_Id);
+    setVolunteers(updatevolunteers);
+  })
+  .catch((error) => {
+    console.log("Could not delete volunteer", error);
+  }); 
+    // const updatedVolunteer = volunteer.filter(
+    //   (volunteer) => volunteer.volunteer_Id !== volunteer_Id
+    // );
+    // setVolunteers(updatedVolunteer);
   }
 
   function addClient(full_name, email, phone, address, postcode, zone) {
