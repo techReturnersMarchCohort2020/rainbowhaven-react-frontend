@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import ListClients from "./ListClients";
 import ListVolunteers from "./ListVolunteers";
@@ -7,92 +7,133 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AppHeader from "./AppHeader";
 import moment from "moment";
 import { v4 as uuidv4 } from "uuid";
+import axios from 'axios';
 
 import "./Home.css";
 import AddVolunteer from "./AddVolunteer";
 
 function Home() {
-  const [items, setClients] = useState([
-    {
-      client_id: uuidv4(),
-      full_name: "Client Name1",
-      email: "client1@gmail.com",
-      phone: "0161 555 5555",
-      address: " 1 hyde terrace",
-      postcode: "M4 4EW",
-      completed: false,
-      date: "2 days ago",
-      zone: "2",
-    },
-    {
-      client_id: uuidv4(),
-      full_name: "Client Name2",
-      email: "client2@gmail.com",
-      address: "3 woodhay street",
-      postcode: "M4 4EW",
-      phone: "0161 555 5555",
-      completed: false,
-      date: "2 days ago",
-      zone: "1",
-    },
-    {
-      client_id: uuidv4(),
-      full_name: "Client Name3",
-      email: "client3@gmail.com",
-      address: "2 woodlane",
-      postcode: "M4 4EW",
-      phone: "0161 555 5555",
-      completed: true,
-      date: "2 days ago",
-      zone: "2",
-    },
-    {
-      client_id: uuidv4(),
-      full_name: "Client Name4",
-      email: "client4@gmail.com",
-      address: "2 roundhay",
-      postcode: "M4 4EW",
-      phone: "0161 555 5555",
-      completed: true,
-      date: "2 days ago",
-      zone: "1",
-    },
-    {
-      client_id: uuidv4(),
-      full_name: "Client Name5",
-      email: "client5@gmail.com",
-      address: "M4 4EW",
-      postcode: "M4 4EW",
-      phone: "0161 555 5555",
-      completed: true,
-      date: "2 days ago",
-      zone: "1",
-    },
-  ]);
 
-  const [volunteer, setVolunteers] = useState([
-    {
-      volunteer_Id: uuidv4(),
-      full_name: "Volunteer Name1",
-      email: "volunteer1@gmail.com",
-      phone: "0161 555 5555",
-      address: "1 woodsley terrace",
-      postcode: "SK5 1BZ",
-      password: "12345",
-      zone: "1",
-    },
-    {
-      volunteer_Id: uuidv4(),
-      full_name: "Volunteer Name2",
-      email: "volunteer2@gmail.com",
-      phone: "0161 555 5555",
-      address: "M4 4EW",
-      postcode: "SK5 1BZ",
-      password: "12345",
-      zone: "2",
-    },
-  ]);
+  const [items, setClients] = useState([]);
+  // const [items, setClients] = useState([
+  //   {
+  //     client_id: uuidv4(),
+  //     full_name: "Client Name1",
+  //     email: "client1@gmail.com",
+  //     phone: "0161 555 5555",
+  //     address: " 1 hyde terrace",
+  //     postcode: "M4 4EW",
+  //     completed: false,
+  //     date: "2 days ago",
+  //     zone: "2",
+  //   },
+  //   {
+  //     client_id: uuidv4(),
+  //     full_name: "Client Name2",
+  //     email: "client2@gmail.com",
+  //     address: "3 woodhay street",
+  //     postcode: "M4 4EW",
+  //     phone: "0161 555 5555",
+  //     completed: false,
+  //     date: "2 days ago",
+  //     zone: "1",
+  //   },
+  //   {
+  //     client_id: uuidv4(),
+  //     full_name: "Client Name3",
+  //     email: "client3@gmail.com",
+  //     address: "2 woodlane",
+  //     postcode: "M4 4EW",
+  //     phone: "0161 555 5555",
+  //     completed: true,
+  //     date: "2 days ago",
+  //     zone: "2",
+  //   },
+  //   {
+  //     client_id: uuidv4(),
+  //     full_name: "Client Name4",
+  //     email: "client4@gmail.com",
+  //     address: "2 roundhay",
+  //     postcode: "M4 4EW",
+  //     phone: "0161 555 5555",
+  //     completed: true,
+  //     date: "2 days ago",
+  //     zone: "1",
+  //   },
+  //   {
+  //     client_id: uuidv4(),
+  //     full_name: "Client Name5",
+  //     email: "client5@gmail.com",
+  //     address: "M4 4EW",
+  //     postcode: "M4 4EW",
+  //     phone: "0161 555 5555",
+  //     completed: true,
+  //     date: "2 days ago",
+  //     zone: "1",
+  //   },
+  // ]);
 
+  const [volunteer,setVolunteers] = useState([]);
+  // const [volunteer, setVolunteers] = useState([
+  //   {
+  //     volunteer_Id: uuidv4(),
+  //     full_name: "Volunteer Name1",
+  //     email: "volunteer1@gmail.com",
+  //     phone: "0161 555 5555",
+  //     address: "1 woodsley terrace",
+  //     postcode: "SK5 1BZ",
+  //     password: "12345",
+  //     zone: "1",
+  //   },
+  //   {
+  //     volunteer_Id: uuidv4(),
+  //     full_name: "Volunteer Name2",
+  //     email: "volunteer2@gmail.com",
+  //     phone: "0161 555 5555",
+  //     address: "M4 4EW",
+  //     postcode: "SK5 1BZ",
+  //     password: "12345",
+  //     zone: "2",
+  //   },
+  // ]);
+
+
+  /////////////////////////////// Get volunteer  ////////////////////////////////
+  useEffect(() => {
+    axios
+      .get('https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/volunteers')
+      .then(//request is successful
+        response => {
+          console.log(response.data);
+          const volunteers = response.data.volunteer
+          setVolunteers(volunteers);
+        })
+      .catch(// an error
+        (error) => {
+          console.log('Error getting volunteers', error)
+        }
+      )
+      .finally(() => console.log("I am done"))
+  }, []);
+
+  //////////////////////////////  Get items  ////////////////////////////////////
+  useEffect(() => {
+    axios
+      .get('https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items')
+      .then(//request is successful
+        response => {
+          console.log(response.data);
+          const clients = response.data.items
+          setClients(clients);
+        })
+      .catch(// an error
+        (error) => {
+          console.log('Error getting items', error)
+        }
+      )
+      .finally(() => console.log("I am done"))
+  }, []);
+//////////////////////////////////////////////////////////////////////////////////
   const activeTasks = items && items.filter((task) => !task.completed);
 
   const completedTasks = items && items.filter((task) => task.completed);

@@ -29,9 +29,9 @@ function AddClient(props) {
     setZone(event.target.value);
   }
 
-  function handleZoneChange(event) {
-    setZone(event.target.value);
-  }
+  // function handleZoneChange(event) {
+  //   setZone(event.target.value);
+  // }
 
   function handleAddClientClick(e) {
     e.preventDefault();
