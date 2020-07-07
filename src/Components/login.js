@@ -67,7 +67,7 @@ function Login(props) {
           onChange={handlePasswordChange}
         />
         <input type="checkbox"></input>
-        <label className="remember"> Remember me</label>
+        <label className="remember ml-2"> Remember me</label>
         <p className="text-right">
           <a href="/sign-up">Forgot password?</a>
         </p>
