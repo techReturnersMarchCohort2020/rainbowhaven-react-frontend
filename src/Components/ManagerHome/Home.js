@@ -9,7 +9,6 @@ import ClientMap from "./ClientMap";
 
 import "./Home.css";
 import AddVolunteer from "./AddVolunteer";
-import moment from "moment";
 import axios from "axios";
 
 function Home() {
@@ -281,7 +280,6 @@ function Home() {
         <div>
             <ClientMap/>
         </div>
-        <div className="Item__border" />
       </div>
     </div>
   );
