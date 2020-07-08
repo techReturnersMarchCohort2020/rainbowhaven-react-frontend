@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 function ListClients(props) {
   function handleDeleteClick() {
@@ -62,7 +63,7 @@ function ListClients(props) {
           ) : (
             <div>
               <h4 className="Item__card-title">Status: Awaiting delivery</h4>
-              <small>Created {props.createDate}</small>
+              <small>Created {moment(props.createDate).calendar()}</small>
             </div>
           )}
         </div>

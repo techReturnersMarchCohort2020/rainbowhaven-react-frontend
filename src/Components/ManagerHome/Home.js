@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import ListClients from "./ListClients";
 import ListVolunteers from "./ListVolunteers";
 import AddClient from "./AddClient";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AppHeader from "./AppHeader";
 import moment from "moment";
 import { v4 as uuidv4 } from "uuid";
@@ -11,123 +9,118 @@ import ClientMap from "./ClientMap";
 
 import "./Home.css";
 import AddVolunteer from "./AddVolunteer";
+import moment from "moment";
+import axios from "axios";
 
 function Home() {
-  const [items, setClients] = useState([
-    {
-      client_id: uuidv4(),
-      full_name: "Client Name1",
-      email: "client1@gmail.com",
-      phone: "0161 555 5555",
-      address: " 1 hyde terrace",
-      postcode: "M4 4EW",
-      completed: false,
-      // deleted: false,
-      date: "2 days ago",
-      zone: "2",
-    },
-    {
-      client_id: uuidv4(),
-      full_name: "Client Name2",
-      email: "client2@gmail.com",
-      address: "3 woodhay street",
-      postcode: "M4 4EW",
-      phone: "0161 555 5555",
-      completed: false,
-      // deleted: false,
-      date: "2 days ago",
-      zone: "1",
-    },
-    {
-      client_id: uuidv4(),
-      full_name: "Client Name3",
-      email: "client3@gmail.com",
-      address: "2 woodlane",
-      postcode: "M4 4EW",
-      phone: "0161 555 5555",
-      completed: true,
-      // deleted: false,
-      date: "2 days ago",
-      zone: "2",
-    },
-    {
-      client_id: uuidv4(),
-      full_name: "Client Name4",
-      email: "client4@gmail.com",
-      address: "2 roundhay",
-      postcode: "M4 4EW",
-      phone: "0161 555 5555",
-      completed: true,
-      // deleted: false,
-      date: "2 days ago",
-      zone: "1",
-    },
-    {
-      client_id: uuidv4(),
-      full_name: "Client Name5",
-      email: "client5@gmail.com",
-      address: "M4 4EW",
-      postcode: "M28 7EW",
-      phone: "0161 555 5555",
-      completed: true,
-      // deleted: false,
-      date: "2 days ago",
-      zone: "1",
-    },
-  ]);
+  const [items, setClients] = useState([]);
+  const [volunteer, setVolunteers] = useState([]);
+  /////////////////////////////   Get volunteer  ///////////////////////////////
+  useEffect(() => {
+    axios
+      .get(
+        "https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/volunteers"
+      )
+      .then(
+        //request is successful
+        (response) => {
+          console.log(response.data);
+          const volunteers = response.data.volunteer;
+          setVolunteers(volunteers);
+        }
+      )
+      .catch(
+        // an error
+        (error) => {
+          console.log("Error getting volunteers", error);
+        }
+      )
+      .finally(() => console.log("I am done"));
+  }, []);
 
-  const [volunteer, setVolunteers] = useState([
-    {
-      volunteer_Id: uuidv4(),
-      full_name: "Volunteer Name1",
-      email: "volunteer1@gmail.com",
-      phone: "0161 555 5555",
-      address: "1 woodsley terrace",
-      postcode: "SK5 1BZ",
-      password: "12345",
-      zone: "1",
-    },
-    {
-      volunteer_Id: uuidv4(),
-      full_name: "Volunteer Name2",
-      email: "volunteer2@gmail.com",
-      phone: "0161 555 5555",
-      address: "M4 4EW",
-      postcode: "SK5 1BZ",
-      password: "12345",
-      zone: "2",
-    },
-  ]);
+  //////////////////////////////  Get items  ////////////////////////////////////
+  useEffect(() => {
+    axios
+      .get("https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items")
+      .then(
+        //request is successful
+        (response) => {
+          console.log(response.data);
+          const clients = response.data.items;
+          setClients(clients);
+        }
+      )
+      .catch(
+        // an error
+        (error) => {
+          console.log("Error getting items", error);
+        }
+      )
+      .finally(() => console.log("I am done"));
+  }, []);
 
-  const activeTasks = items && items.filter((task) => !task.completed);
+  let activeTasks = items && items.filter((task) => !task.completed);
 
-  const completedTasks = items && items.filter((task) => task.completed);
+  let completedTasks = items && items.filter((task) => task.completed);
 
+  /////////////////////////////////// DELETE client //////////////////////////////////
   function deleteClient(client_id) {
-    const updatedClients = items.filter((item) => item.client_id !== client_id);
-    setClients(updatedClients);
+    axios
+      .delete(
+        `https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items/${client_id}`
+      )
+      .then((response) => {
+        const updatedclients = items.filter(
+          (client) => client.client_id !== client_id
+        );
+        setClients(updatedclients);
+      })
+      .catch((error) => {
+        console.log("Could not delete client", error);
+      });
   }
 
+  /////////////////////////////// PUT (Update client) !!??  ///////////////////////////////
   function completeDelivery(client_id) {
-    const updatedClients = items.map((item) => {
-      if (item.client_id === client_id) {
-        item.completed = true;
+    const updatedClients = items.map((task) => {
+      if (task.client_id === client_id) {
+        task.completed = true;
       }
-      return item;
+      return task;
     });
-    setClients(updatedClients);
-  }
+    const updatedClient = items.find((task) => task.client_id === client_id);
 
+    axios
+      .put(
+        `https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items/${client_id}`,
+        updatedClient
+      )
+      .then((response) => {
+        setClients(updatedClients);
+      })
+      .catch((error) => {
+        console.log("Could not update the client", error);
+      });
+  }
+  /////////////////////////////////////  DELETE volunteer ///////////////////////////////
   function deleteVolunteer(volunteer_Id) {
-    const updatedVolunteer = volunteer.filter(
-      (volunteer) => volunteer.volunteer_Id !== volunteer_Id
-    );
-    setVolunteers(updatedVolunteer);
+    axios
+      .delete(
+        `https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/volunteer/${volunteer_Id}`
+      )
+      .then((response) => {
+        const updatevolunteers = volunteer.filter(
+          (volunteer) => volunteer.volunteer_Id !== volunteer_Id
+        );
+        setVolunteers(updatevolunteers);
+      })
+      .catch((error) => {
+        console.log("Could not delete volunteer", error);
+      });
   }
-
+  /////////////////////////////////////// Post (add) a client ///////////////////////////////////
   function addClient(full_name, email, phone, address, postcode, zone) {
     const newClient = {
-      client_id: uuidv4(),
       full_name: full_name,
       email: email,
       phone: phone,
@@ -136,12 +129,24 @@ function Home() {
       completed: false,
       zone: zone,
       date: moment(),
+      managerId: 1,
     };
-
-    const updatedClients = [...items, newClient];
-    setClients(updatedClients);
+    axios
+      .post(
+        "https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items",
+        newClient
+      )
+      .then((response) => {
+        newClient.client_id = response.data.task[0].client_id;
+        const updatedTask = [...items, newClient];
+        setClients(updatedTask);
+      })
+      .catch((error) => {
+        console.log("Error adding a client", error);
+      });
   }
 
+  /////////////////////////////////////// Post (add) a volunteer  ///////////////////////////////////
   function addVolunteer(
     full_name,
     email,
@@ -152,7 +157,7 @@ function Home() {
     zone
   ) {
     const newVolunteer = {
-      volunteer_Id: uuidv4(),
+      // volunteer_Id: uuidv4(),
       full_name: full_name,
       email: email,
       phone: phone,
@@ -160,11 +165,23 @@ function Home() {
       postcode: postcode,
       password: password,
       zone: zone,
+      managerId: 1,
     };
-
-    const updatedVolunteer = [...volunteer, newVolunteer];
-    setVolunteers(updatedVolunteer);
+    axios
+      .post(
+        "https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/volunteer",
+        newVolunteer
+      )
+      .then((response) => {
+        newVolunteer.volunteer_id = response.data.task[0].volunteer_Id;
+        const updatedTask = [...volunteer, newVolunteer];
+        setVolunteers(updatedTask);
+      })
+      .catch((error) => {
+        console.log("Error adding a volunteer", error);
+      });
   }
+
   return (
     <div className="home_body">
       <AppHeader />
