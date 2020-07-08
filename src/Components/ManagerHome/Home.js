@@ -101,9 +101,9 @@ function Home() {
       .finally(() => console.log("I am done"))
   }, []);
 
-  const activeTasks = items && items.filter((task) => !task.completed);
+  let activeTasks =items && items.filter((task) => !task.completed);
 
-  const completedTasks = items && items.filter((task) => task.completed);
+  let completedTasks = items && items.filter((task) => task.completed);
 
   /////////////////////////////////// DELETE client //////////////////////////////////
   function deleteClient(client_id) {
@@ -119,14 +119,18 @@ function Home() {
   }
 
 /////////////////////////////// PUT (Update client) !!??  ///////////////////////////////
-  function completeDelivery(client_id) {
-    const updatedClients = items.map((item) => {
-      if (item.client_id === client_id) {
-        item.completed = true;
-      }
-      return item;
-    });
+function completeDelivery(client_id) {
+    const updatedClients = items.find(task => task.client_id === client_id);
+    updatedClients.completed = true;
+    axios
+    .put(`https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items/${client_id}`, updatedClients)
+    .then(response => {
     setClients(updatedClients);
+    })
+    .catch(error => {
+     console.log("Could not update the client", error);
+      });
+      
   }
   /////////////////////////////////////  DELETE volunteer ///////////////////////////////
   function deleteVolunteer(volunteer_Id) {
