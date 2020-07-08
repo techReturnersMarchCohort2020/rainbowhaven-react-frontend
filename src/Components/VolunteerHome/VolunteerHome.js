@@ -1,78 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 import VolunteerListClients from "./VolunteerListClients";
-import { v4 as uuidv4 } from "uuid";
 import VolunteerHeader from "./VolunteerHeader";
 import "./VolunteerHome.css";
 
 function VolunteerHome() {
-  const [items, setClients] = useState([
-    {
-      client_id: uuidv4(),
-      full_name: "Client Name1",
-      email: "client1@gmail.com",
-      phone: "0161 555 5555",
-      address: "M4 4EW",
-      completed: false,
-      deleted: false,
-      date: "2 days ago",
-    },
-    {
-      client_id: uuidv4(),
-      full_name: "Client Name2",
-      email: "client2@gmail.com",
-      address: "M4 4EW",
-      phone: "0161 555 5555",
-      completed: false,
-      deleted: false,
-      date: "2 days ago",
-    },
-    {
-      client_id: uuidv4(),
-      full_name: "Client Name3",
-      email: "client3@gmail.com",
-      address: "M4 4EW",
-      phone: "0161 555 5555",
-      completed: true,
-      deleted: false,
-      date: "2 days ago",
-    },
-    {
-      client_id: uuidv4(),
-      full_name: "Client Name4",
-      email: "client4@gmail.com",
-      address: "M4 4EW",
-      phone: "0161 555 5555",
-      completed: true,
-      deleted: false,
-      date: "2 days ago",
-    },
-    {
-      client_id: uuidv4(),
-      full_name: "Client Name5",
-      email: "client5@gmail.com",
-      address: "M4 4EW",
-      phone: "0161 555 5555",
-      completed: true,
-      deleted: false,
-      date: "2 days ago",
-    },
-  ]);
+  const [items, setClients] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items")
+      .then(
+        //request is successful
+        (response) => {
+          console.log(response.data);
+          const clients = response.data.items;
+          setClients(clients);
+        }
+      )
+      .catch(
+        // an error
+        (error) => {
+          console.log("Error getting items", error);
+        }
+      )
+      .finally(() => console.log("I am done"));
+  }, []);
 
   const activeTasks = items && items.filter((task) => !task.completed);
 
   function completeDelivery(client_id) {
-    const updatedClients = items.map((item) => {
-      if (item.client_id === client_id) {
-        item.completed = true;
+    const updatedClients = items.map((task) => {
+      if (task.client_id === client_id) {
+        task.completed = true;
       }
-      return item;
+      return task;
     });
-    setClients(updatedClients);
+    const updatedClient = items.find((task) => task.client_id === client_id);
+
+    axios
+      .put(
+        `https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items/${client_id}`,
+        updatedClient
+      )
+      .then((response) => {
+        setClients(updatedClients);
+      })
+      .catch((error) => {
+        console.log("Could not update the client", error);
+      });
   }
 
   return (
     <div className="volonteer_home">
-      <VolunteerHeader/>
+      <VolunteerHeader />
       <div className="container">
         <div className="row">
           <div className="col">
@@ -88,8 +70,10 @@ function VolunteerHome() {
                       email={item.email}
                       phone={item.phone}
                       address={item.address}
-                      createDate={item.date}
+                      postcode={item.postcode}
+                      zone={item.zone}
                       completeDelivery={completeDelivery}
+                      createDate={item.date}
                     />
                   ))}
                   <div className="Item__border" />
