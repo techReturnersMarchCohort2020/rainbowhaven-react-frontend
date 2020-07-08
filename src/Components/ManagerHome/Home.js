@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AppHeader from "./AppHeader";
 import moment from "moment";
 import { v4 as uuidv4 } from "uuid";
+import ClientMap from "./ClientMap";
 
 import "./Home.css";
 import AddVolunteer from "./AddVolunteer";
@@ -66,7 +67,7 @@ function Home() {
       full_name: "Client Name5",
       email: "client5@gmail.com",
       address: "M4 4EW",
-      postcode: "M4 4EW",
+      postcode: "M28 7EW",
       phone: "0161 555 5555",
       completed: true,
       // deleted: false,
@@ -260,7 +261,9 @@ function Home() {
           </div>
         </div>
         <div className="Item__border" />
-
+        <div>
+            <ClientMap/>
+        </div>
         <div className="Item__border" />
       </div>
     </div>
