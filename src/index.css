@@ -4,9 +4,10 @@
   box-sizing: border-box;
 }
 body {
-  /* background: #145088 !important; */
+  background: linear-gradient(to right, #7ab7d3, #4b9fc3) !important;
 
   background: url(./images/bigBalloon.jpg);
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
