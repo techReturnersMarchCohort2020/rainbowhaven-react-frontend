@@ -5,13 +5,9 @@
 
 .Item__border {
   width: 100%;
-  margin: 2vw;
-  border: 10px solid;
-  border-image-source: linear-gradient(
-    45deg,
-    #503ab7,
-    #553e65 
-  );
+  margin: 1vw 0;
+  border-bottom: 10px solid;
+  border-image-source: linear-gradient(45deg, #503ab7, #553e65);
   border-image-slice: 1;
 }
 

@@ -1,116 +1,74 @@
 import React, { useState, useEffect } from "react";
-
 import ListClients from "./ListClients";
 import ListVolunteers from "./ListVolunteers";
 import AddClient from "./AddClient";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AppHeader from "./AppHeader";
-import moment from "moment";
-import { v4 as uuidv4 } from "uuid";
-import axios from 'axios';
-
 import "./Home.css";
 import AddVolunteer from "./AddVolunteer";
+import moment from "moment";
+import axios from "axios";
 
 function Home() {
-
   const [items, setClients] = useState([]);
-  // const [items, setClients] = useState([
-  //   {
-  //     client_id: uuidv4(),
-  //     full_name: "Client Name3",
-  //     email: "client3@gmail.com",
-  //     address: "2 woodlane",
-  //     postcode: "M4 4EW",
-  //     phone: "0161 555 5555",
-  //     completed: true,
-  //     date: "2 days ago",
-  //     zone: "2",
-  //   },
-  //   {
-  //     client_id: uuidv4(),
-  //     full_name: "Client Name5",
-  //     email: "client5@gmail.com",
-  //     address: "M4 4EW",
-  //     postcode: "M4 4EW",
-  //     phone: "0161 555 5555",
-  //     completed: true,
-  //     date: "2 days ago",
-  //     zone: "1",
-  //   },
-  // ]);
-
   const [volunteer, setVolunteers] = useState([]);
-  // const [volunteer, setVolunteers] = useState([
-  //   {
-  //     volunteer_Id: uuidv4(),
-  //     full_name: "Volunteer Name1",
-  //     email: "volunteer1@gmail.com",
-  //     phone: "0161 555 5555",
-  //     address: "1 woodsley terrace",
-  //     postcode: "SK5 1BZ",
-  //     password: "12345",
-  //     zone: "1",
-  //   },
-  //   {
-  //     volunteer_Id: uuidv4(),
-  //     full_name: "Volunteer Name2",
-  //     email: "volunteer2@gmail.com",
-  //     phone: "0161 555 5555",
-  //     address: "M4 4EW",
-  //     postcode: "SK5 1BZ",
-  //     password: "12345",
-  //     zone: "2",
-  //   },
-  // ]);
-
-
   /////////////////////////////   Get volunteer  ///////////////////////////////
   useEffect(() => {
     axios
-      .get('https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/volunteers')
-      .then(//request is successful
-        response => {
+      .get(
+        "https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/volunteers"
+      )
+      .then(
+        //request is successful
+        (response) => {
           console.log(response.data);
-          const volunteers = response.data.volunteer
+          const volunteers = response.data.volunteer;
           setVolunteers(volunteers);
-        })
-      .catch(// an error
-        (error) => {
-          console.log('Error getting volunteers', error)
         }
       )
-      .finally(() => console.log("I am done"))
+      .catch(
+        // an error
+        (error) => {
+          console.log("Error getting volunteers", error);
+        }
+      )
+      .finally(() => console.log("I am done"));
   }, []);
 
   //////////////////////////////  Get items  ////////////////////////////////////
   useEffect(() => {
     axios
-      .get('https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items')
-      .then(//request is successful
-        response => {
+      .get("https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items")
+      .then(
+        //request is successful
+        (response) => {
           console.log(response.data);
-          const clients = response.data.items
+          const clients = response.data.items;
           setClients(clients);
-        })
-      .catch(// an error
-        (error) => {
-          console.log('Error getting items', error)
         }
       )
-      .finally(() => console.log("I am done"))
+      .catch(
+        // an error
+        (error) => {
+          console.log("Error getting items", error);
+        }
+      )
+      .finally(() => console.log("I am done"));
   }, []);
 
-  let activeTasks =items && items.filter((task) => !task.completed);
+  let activeTasks = items && items.filter((task) => !task.completed);
 
   let completedTasks = items && items.filter((task) => task.completed);
 
   /////////////////////////////////// DELETE client //////////////////////////////////
   function deleteClient(client_id) {
     axios
-      .delete(`https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items/${client_id}`)
-      .then(response => {
-        const updatedclients = items.filter(client => client.client_id !== client_id);
+      .delete(
+        `https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items/${client_id}`
+      )
+      .then((response) => {
+        const updatedclients = items.filter(
+          (client) => client.client_id !== client_id
+        );
         setClients(updatedclients);
       })
       .catch((error) => {
@@ -118,37 +76,47 @@ function Home() {
       });
   }
 
-/////////////////////////////// PUT (Update client) !!??  ///////////////////////////////
-function completeDelivery(client_id) {
-    const updatedClients = items.find(task => task.client_id === client_id);
-    updatedClients.completed = true;
+  /////////////////////////////// PUT (Update client) !!??  ///////////////////////////////
+  function completeDelivery(client_id) {
+    const updatedClients = items.map((task) => {
+      if (task.client_id === client_id) {
+        task.completed = true;
+      }
+      return task;
+    });
+    const updatedClient = items.find((task) => task.client_id === client_id);
+
     axios
-    .put(`https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items/${client_id}`, updatedClients)
-    .then(response => {
-    setClients(updatedClients);
-    })
-    .catch(error => {
-     console.log("Could not update the client", error);
+      .put(
+        `https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items/${client_id}`,
+        updatedClient
+      )
+      .then((response) => {
+        setClients(updatedClients);
+      })
+      .catch((error) => {
+        console.log("Could not update the client", error);
       });
-      
   }
   /////////////////////////////////////  DELETE volunteer ///////////////////////////////
   function deleteVolunteer(volunteer_Id) {
     axios
-      .delete(`https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/volunteer/${volunteer_Id}`)
-      .then(response => {
-        const updatevolunteers = volunteer.filter(volunteer => volunteer.volunteer_Id !== volunteer_Id);
+      .delete(
+        `https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/volunteer/${volunteer_Id}`
+      )
+      .then((response) => {
+        const updatevolunteers = volunteer.filter(
+          (volunteer) => volunteer.volunteer_Id !== volunteer_Id
+        );
         setVolunteers(updatevolunteers);
       })
       .catch((error) => {
         console.log("Could not delete volunteer", error);
       });
-
   }
   /////////////////////////////////////// Post (add) a client ///////////////////////////////////
   function addClient(full_name, email, phone, address, postcode, zone) {
     const newClient = {
-      client_id: uuidv4(),
       full_name: full_name,
       email: email,
       phone: phone,
@@ -157,23 +125,33 @@ function completeDelivery(client_id) {
       completed: false,
       zone: zone,
       date: moment(),
+      managerId: 1,
     };
     axios
-      .post("https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items", newClient)
-      .then(
-        (response) => {
-          newClient.client_id = response.data.task[0].client_id;
-          const updatedTask = [...items, newClient];
-          setClients(updatedTask);
-        }
+      .post(
+        "https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/items",
+        newClient
       )
-      .catch((error) => {
-        console.log("Error adding a client", error)
+      .then((response) => {
+        newClient.client_id = response.data.task[0].client_id;
+        const updatedTask = [...items, newClient];
+        setClients(updatedTask);
       })
+      .catch((error) => {
+        console.log("Error adding a client", error);
+      });
   }
 
   /////////////////////////////////////// Post (add) a volunteer  ///////////////////////////////////
-  function addVolunteer(full_name, email, phone, address, postcode, password, zone) {
+  function addVolunteer(
+    full_name,
+    email,
+    phone,
+    address,
+    postcode,
+    password,
+    zone
+  ) {
     const newVolunteer = {
       // volunteer_Id: uuidv4(),
       full_name: full_name,
@@ -183,19 +161,21 @@ function completeDelivery(client_id) {
       postcode: postcode,
       password: password,
       zone: zone,
+      managerId: 1,
     };
     axios
-      .post("https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/volunteer", newVolunteer)
-      .then(
-        (response) => {
-          newVolunteer.volunteer_id = response.data.task[0].volunteer_Id;
-          const updatedTask = [...volunteer, newVolunteer];
-          setVolunteers(updatedTask);
-        }
+      .post(
+        "https://qrk4yg29wg.execute-api.eu-west-2.amazonaws.com/dev/volunteer",
+        newVolunteer
       )
-      .catch((error) => {
-        console.log("Error adding a volunteer", error)
+      .then((response) => {
+        newVolunteer.volunteer_id = response.data.task[0].volunteer_Id;
+        const updatedTask = [...volunteer, newVolunteer];
+        setVolunteers(updatedTask);
       })
+      .catch((error) => {
+        console.log("Error adding a volunteer", error);
+      });
   }
 
   return (
@@ -293,8 +273,6 @@ function completeDelivery(client_id) {
             </div>
           </div>
         </div>
-        <div className="Item__border" />
-
         <div className="Item__border" />
       </div>
     </div>
