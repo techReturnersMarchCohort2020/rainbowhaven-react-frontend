@@ -9,7 +9,7 @@ function AppHeader() {
         Log Out
       </Link>
       <a href="#" className="nav-link ">
-        <i className="fas fa-user mr-2"></i>Welcome
+        <i className="fas fa-user mr-2"></i>Welcome Kate
       </a>
     </nav>
   );
