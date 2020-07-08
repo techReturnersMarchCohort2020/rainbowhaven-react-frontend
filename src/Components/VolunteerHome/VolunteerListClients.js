@@ -1,10 +1,7 @@
 import React from "react";
+import moment from "moment";
 
 function ListClients(props) {
-  function handleDeleteClick() {
-    console.log("The delete button has been clicked!");
-    props.deleteClient(props.id);
-  }
   function handleCompleteClick() {
     console.log("The complete button has been clicked!");
     props.completeDelivery(props.id);
@@ -17,10 +14,12 @@ function ListClients(props) {
           <h4 className="Item__card-title">Email: {props.email}</h4>
           <h4 className="Item__card-title">Phone: {props.phone}</h4>
           <h4 className="Item__card-title">Address: {props.address}</h4>
+          <h4 className="Item__card-title">Postcode: {props.postcode}</h4>
+          <h4 className="Item__card-title">Zone: {props.zone}</h4>
         </div>
         <div className="card-footer text-muted bg-light">
           <h4 className="Item__card-title">Status: Awaiting delivery</h4>
-          <small>Created {props.createDate}</small>
+          <small>Created {moment(props.createDate).calendar()}</small>
         </div>
 
         <div className="card-footer text-muted bg-light">
@@ -33,7 +32,7 @@ function ListClients(props) {
           </button>
         </div>
       </div>
-    </div >
+    </div>
   );
 }
 
