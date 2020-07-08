@@ -34,9 +34,9 @@ function AddVolunteer(props) {
     setZone(event.target.value);
   }
 
-  function handleZoneChange(event) {
-    setZone(event.target.value);
-  }
+  // function handleZoneChange(event) {
+  //   setZone(event.target.value);
+  // }
 
   function handleAddVolunteerClick(event) {
     event.preventDefault();
@@ -137,7 +137,7 @@ function AddVolunteer(props) {
                     </div>
                   </div>
                 </div>
-                <div className="row">
+                {/* <div className="row">
                   <div className="col-md-6">
                     <div className="form-group">
                       <input
@@ -149,7 +149,7 @@ function AddVolunteer(props) {
                       />
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="col-md-12">
                   <div className="form-group">
