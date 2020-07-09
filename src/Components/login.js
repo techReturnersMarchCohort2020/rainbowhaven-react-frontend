@@ -40,7 +40,7 @@ function Login(props) {
       let path = "/volunteer";
       history.push(path);
     } else {
-      alert("Incorrect log in details");
+      alert("Incorrect Email/ password ");
     }
     console.log(email, password);
   }
