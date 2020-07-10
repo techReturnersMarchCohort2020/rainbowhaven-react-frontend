@@ -4,7 +4,6 @@ import ListVolunteers from "./ListVolunteers";
 import AddClient from "./AddClient";
 import AppHeader from "./AppHeader";
 import moment from "moment";
-import { v4 as uuidv4 } from "uuid";
 import ClientMap from "./ClientMap";
 
 import "./Home.css";
@@ -276,10 +275,11 @@ function Home() {
             </div>
           </div>
         </div>
+
         <div className="Item__border" />
-        <div>
-            <ClientMap/>
-        </div>
+      </div>
+      <div className="col">
+        <ClientMap />
       </div>
     </div>
   );

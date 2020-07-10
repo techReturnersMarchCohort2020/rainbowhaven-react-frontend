@@ -4,11 +4,10 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./Components/login";
 import SignUp from "./Components/signup";
-import pickUpVolunteer from "./Components/pickUpVolunteer/pickUpVolunteer";
+import pickUpVolunteer from "./Components/ManagerHome/pickUpVolunteer";
 import Home from "./Components/ManagerHome/Home";
 import Volunteer from "./Components/VolunteerHome/VolunteerHome";
 import VolunteerHome from "./Components/VolunteerHome/VolunteerHome";
-
 
 function App() {
   return (
@@ -38,11 +37,11 @@ function App() {
                   For Volunteer
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link className="nav-link" to={"/pickUp-Volunteer"}>
                   pickUpVolunteer
                 </Link>
-              </li>
+              </li> */}
             </ul>
             {/* </div> */}
           </div>
@@ -74,6 +73,5 @@ function App() {
     </Router>
   );
 }
-
 
 export default App;
