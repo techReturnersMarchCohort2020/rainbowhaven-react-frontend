@@ -48,7 +48,7 @@ function PickUpVolunteer() {
               className="btn btn-primary btn-block btn-login"
               // onClick={handleSubmitClick}
             >
-              Submit
+              Deliver
             </button>
           </div>
         </div>
