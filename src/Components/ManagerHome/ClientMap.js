@@ -4,7 +4,7 @@ import Geocode from "react-geocode";
 
 function Map() {
 
-//   Geocode.setApiKey("AIzaSyA2PvRYfHXdATLusWD5BRsWQTSff9xY6X8");
+//   Geocode.setApiKey("");
 //   // set response language. Defaults to english.
 // Geocode.setLanguage("en");
 // // Get latidude & longitude from address.
@@ -20,8 +20,9 @@ function Map() {
 
   return ( 
     <GoogleMap 
-      defaultZoom={10} 
+      defaultZoom={12} 
       defaultCenter={{lat: 53.483959, lng: -2.244644}}
+      
     >
       <Marker
        icon={{url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'}}
@@ -35,6 +36,7 @@ function Map() {
     <Marker 
     icon={{url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'}}
       position={{ lat: 53.450714, lng: -1.994911 }}
+      label={"Tom"}
     />
     <Marker 
     icon={{url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'}}
