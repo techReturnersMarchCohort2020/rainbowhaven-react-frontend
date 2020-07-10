@@ -2,7 +2,7 @@ import React from "react";
 
 function ListPickUpVolunteer(props) {
   return (
-    <div className="col-sm-12 col-md-6 col-lg-3">
+    <div className="col">
       <div className="form-group">
         <ul className="list-group ">
           <div className="custom-control custom-radio">

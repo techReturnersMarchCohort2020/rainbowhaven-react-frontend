@@ -54,6 +54,7 @@ function AddVolunteer(props) {
     setAddress("");
     setPassword("");
     setPostcode("");
+    setPhone("");
     setZone("");
   }
   return (
