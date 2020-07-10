@@ -155,7 +155,6 @@ function Home() {
     zone
   ) {
     const newVolunteer = {
-      // volunteer_Id: uuidv4(),
       full_name: full_name,
       email: email,
       phone: phone,
