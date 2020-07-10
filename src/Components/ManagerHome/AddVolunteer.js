@@ -55,6 +55,7 @@ function AddVolunteer(props) {
     setPassword("");
     setPostcode("");
     setZone("");
+    setPhone("");
   }
   return (
     <Fragment>
