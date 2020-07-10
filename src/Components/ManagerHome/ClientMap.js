@@ -51,7 +51,7 @@ function ClientMap() {
     return (
       <div style={{width: '70vw', height: '60vh'}}>
         <WrappedMap 
-        googleMapURL = {`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDCVOvaXROSl2YfHQBLf-H4Mp9XdedsZao`}
+        googleMapURL = {`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places`}
         loadingElement={<div style={{ height: `150%` }} />}
         containerElement={<div style={{ height: `600px` }} />}
         mapElement={<div style={{ height: `90%` }} />} />
