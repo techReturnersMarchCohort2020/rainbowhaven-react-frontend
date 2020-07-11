@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9c780f12a36cb0349610b617dc2ba8fe",
+    "revision": "76e3d45b033a44427ea843c2b240c6da",
     "url": "/rainbowhaven-react-frontend/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/rainbowhaven-react-frontend/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "613111486ae99cc0b666",
+    "revision": "158a53f85c554d441335",
     "url": "/rainbowhaven-react-frontend/static/css/main.c92db21f.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/rainbowhaven-react-frontend/static/js/2.a3e895e1.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "613111486ae99cc0b666",
-    "url": "/rainbowhaven-react-frontend/static/js/main.ea629673.chunk.js"
+    "revision": "158a53f85c554d441335",
+    "url": "/rainbowhaven-react-frontend/static/js/main.4e9b7e36.chunk.js"
   },
   {
     "revision": "2c13713f72a702a353a8",
