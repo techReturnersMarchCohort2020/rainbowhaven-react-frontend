@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./login.css";
-import { Button } from "react-bootstrap";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 // export default class Login extends Component {
@@ -67,7 +65,7 @@ function Login(props) {
           onChange={handlePasswordChange}
         />
         <input type="checkbox"></input>
-        <label className="remember ml-2"> Remember me</label>
+        <label className="remember mt-3 ml-2"> Remember me</label>
         <p className="text-right">
           <a href="/sign-up">Forgot password?</a>
         </p>
@@ -77,12 +75,12 @@ function Login(props) {
       </div>
       <button
         type="submit"
-        className="btn btn-primary btn-block btn-login"
+        className="btn btn-block btn-login"
         onClick={handleSubmitClick}
       >
-        Submit
+        Log In
       </button>
-      <p className=" text-right">
+      <p className="text-right mt-2">
         Not registered? <a href="/sign-up">SignUp</a>
       </p>
     </form>

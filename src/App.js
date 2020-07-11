@@ -13,10 +13,10 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav className="navbar navbar-expand-lg navbar-light">
-          <div className="container">
-            {/* <div className="collapse navbar-collapse" id="navbarTogglerDemo02"> */}
-            <ul className="nav navbar-nav ml-auto">
+        {/* <nav className="navbar navbar-expand-lg navbar-light">
+          <div className="container"> */}
+        {/* <div className="collapse navbar-collapse" id="navbarTogglerDemo02"> */}
+        {/* <ul className="nav navbar-nav ml-auto">
               <li className="nav-item">
                 <Link className="nav-link" to={"/sign-in"}>
                   Log in
@@ -42,10 +42,10 @@ function App() {
                   pickUpVolunteer
                 </Link>
               </li> */}
-            </ul>
-            {/* </div> */}
-          </div>
-        </nav>
+        {/* </ul> */}
+        {/* </div> */}
+        {/* </div>
+        </nav> */}
 
         <div className="auth-wrapper">
           <div className="auth-inner">

@@ -73,17 +73,3 @@ body {
 h4 {
   font-size: 14px;
 }
-
-/* On screens that are 992px or less, set the background color to blue */
-@media screen and (max-width: 992px) {
-  h4 {
-    font-size: 16px;
-  }
-}
-
-/* On screens that are 600px or less, set the background color to olive */
-@media screen and (max-width: 600px) {
-  h4 {
-    font-size: 18px;
-  }
-}
