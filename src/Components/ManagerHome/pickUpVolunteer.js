@@ -56,6 +56,9 @@ function PickUpVolunteer() {
             >
               Deliver
             </button>
+            <p className="text-right mt-2">
+              <a href="/manager">Back</a>
+            </p>
           </div>
         </div>
       </div>

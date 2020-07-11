@@ -8,9 +8,9 @@ function AppHeader() {
       <Link to="/sign-in" className="nav-link">
         Log Out
       </Link>
-      {/* <Link to="/pickUp-Volunteer" className="nav-link">
+      <Link to="/pickUp-Volunteer" className="nav-link">
         Pick Up Volunteer
-      </Link> */}
+      </Link>
       <a href="#" className="nav-link ">
         <i className="fas fa-user mr-2"></i>Welcome Kate
       </a>
