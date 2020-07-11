@@ -27,20 +27,23 @@ function Map() {
       <Marker
        icon={{url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'}}
       position={{ lat: 53.483959, lng: -2.244644 }}
+      label={{fontSize: '15px',text : "Tom",color: "white",fontWeight: "bold"}}
     />
     <Marker
        icon={{url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'}}
       position={{ lat: 53.468820, lng: -2.156210 }}
+      label={{fontSize: '15px',text : "Tom",color: "white",fontWeight: "bold"}}
     />
    
     <Marker 
     icon={{url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'}}
       position={{ lat: 53.450714, lng: -1.994911 }}
-      label={"Tom"}
+      label={{fontSize: '15px',text : "Tom",color: "white",fontWeight: "bold"}}
     />
     <Marker 
     icon={{url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'}}
-      position={{ lat: 53.482800, lng: -2.204350 }}
+      position={{ lat: 53.482800, lng: -2.204350 }} 
+      label={{fontSize: '15px',text : "Tom",color: "white",fontWeight: "bold"}}
     />
 
   </GoogleMap>
