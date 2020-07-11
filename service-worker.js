@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/rainbowhaven-react-frontend/precache-manifest.909a227cb40d17712a2d0ab7c51641a5.js"
+  "/rainbowhaven-react-frontend/precache-manifest.7172bcba6c3941a230a1e5ff852f1f28.js"
 );
 
 self.addEventListener('message', (event) => {
