@@ -7,7 +7,7 @@ function ListClients(props) {
     props.completeDelivery(props.id);
   }
   return (
-    <div className="col-sm-12 col-md-6 col-lg-3">
+    <div className="col-sm-12 col-md-6 col-lg-4">
       <div className="Item__card card text-center m-2">
         <div className="card-body">
           <h4 className="Item__card-title">Name: {props.full_name}</h4>
