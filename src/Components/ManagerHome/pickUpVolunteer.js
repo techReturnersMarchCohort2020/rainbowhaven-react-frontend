@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import { useHistory } from "react-router-dom";
 import ListPickUpVolunteer from "./ListPickUpVolunteer";
 import "../VolunteerHome/VolunteerHome.css";
 
@@ -29,6 +29,12 @@ function PickUpVolunteer() {
       .finally(() => console.log("I am done"));
   }, []);
 
+  const history = useHistory();
+  function handleSubmitClick(event) {
+    event.preventDefault();
+    let path = "/manager";
+    history.push(path);
+  }
   return (
     <div className="pickUpVolunteer">
       <div className="container">
@@ -46,7 +52,7 @@ function PickUpVolunteer() {
             <button
               type="submit"
               className="btn btn-primary btn-block btn-login"
-              // onClick={handleSubmitClick}
+              onClick={handleSubmitClick}
             >
               Deliver
             </button>
