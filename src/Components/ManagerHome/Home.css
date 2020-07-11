@@ -7,7 +7,7 @@ body {
 }
 
 .home_body {
-  margin-top: -650px;
+  margin-top: -745px;
 }
 
 .Item__border {
@@ -67,9 +67,4 @@ body {
   background-color: #a0b3c7;
   box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.56);
   transition: all ease 500ms;
-}
-
-/* ListClients */
-h4 {
-  font-size: 14px;
 }
