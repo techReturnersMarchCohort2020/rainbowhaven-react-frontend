@@ -277,6 +277,7 @@ function Home() {
 
         <div className="Item__border" />
       </div>
+
       <div className="col">
         <ClientMap />
       </div>
