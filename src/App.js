@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav className="navbar navbar-expand-lg navbar-light">
+        {/* <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container">
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="nav navbar-nav ml-auto">
@@ -45,13 +45,13 @@ function App() {
               </ul>
             </div>
           </div>
-        </nav>
+        </nav> */}
 
         <div className="auth-wrapper">
           <div className="auth-inner">
-            <h5 className="text-center mb-2">
+            {/* <h5 className="text-center mb-2">
               What is the essence of life? To serve others and to do good.
-            </h5>
+            </h5> */}
             <Switch>
               <Route exact path="/" component={Login} />
               <Route path="/sign-in" component={Login} />
