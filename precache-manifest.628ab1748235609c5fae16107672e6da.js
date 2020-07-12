@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f243f03854e1f751aeb833849672d515",
+    "revision": "5116ce6aeadc4df732c1e8da04355568",
     "url": "/rainbowhaven-react-frontend/index.html"
   },
   {
-    "revision": "3bb1f777c769a2752dae",
+    "revision": "e786360ffdf387018426",
     "url": "/rainbowhaven-react-frontend/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "111ba552197b253bf89a",
-    "url": "/rainbowhaven-react-frontend/static/css/main.c92db21f.chunk.css"
+    "revision": "ebfcc3e0003e6b1b42f6",
+    "url": "/rainbowhaven-react-frontend/static/css/main.72bd2370.chunk.css"
   },
   {
-    "revision": "3bb1f777c769a2752dae",
-    "url": "/rainbowhaven-react-frontend/static/js/2.a3e895e1.chunk.js"
+    "revision": "e786360ffdf387018426",
+    "url": "/rainbowhaven-react-frontend/static/js/2.1f9d07c7.chunk.js"
   },
   {
     "revision": "031b62b957b4fb917cd0ec81e2c8bd7b",
-    "url": "/rainbowhaven-react-frontend/static/js/2.a3e895e1.chunk.js.LICENSE.txt"
+    "url": "/rainbowhaven-react-frontend/static/js/2.1f9d07c7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "111ba552197b253bf89a",
-    "url": "/rainbowhaven-react-frontend/static/js/main.2d269cf0.chunk.js"
+    "revision": "ebfcc3e0003e6b1b42f6",
+    "url": "/rainbowhaven-react-frontend/static/js/main.e39e488b.chunk.js"
   },
   {
     "revision": "2c13713f72a702a353a8",

@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/rainbowhaven-react-frontend/static/css/main.c92db21f.chunk.css",
-    "main.js": "/rainbowhaven-react-frontend/static/js/main.2d269cf0.chunk.js",
-    "main.js.map": "/rainbowhaven-react-frontend/static/js/main.2d269cf0.chunk.js.map",
+    "main.css": "/rainbowhaven-react-frontend/static/css/main.72bd2370.chunk.css",
+    "main.js": "/rainbowhaven-react-frontend/static/js/main.e39e488b.chunk.js",
+    "main.js.map": "/rainbowhaven-react-frontend/static/js/main.e39e488b.chunk.js.map",
     "runtime-main.js": "/rainbowhaven-react-frontend/static/js/runtime-main.d3c22bb4.js",
     "runtime-main.js.map": "/rainbowhaven-react-frontend/static/js/runtime-main.d3c22bb4.js.map",
     "static/css/2.af3c1da9.chunk.css": "/rainbowhaven-react-frontend/static/css/2.af3c1da9.chunk.css",
-    "static/js/2.a3e895e1.chunk.js": "/rainbowhaven-react-frontend/static/js/2.a3e895e1.chunk.js",
-    "static/js/2.a3e895e1.chunk.js.map": "/rainbowhaven-react-frontend/static/js/2.a3e895e1.chunk.js.map",
+    "static/js/2.1f9d07c7.chunk.js": "/rainbowhaven-react-frontend/static/js/2.1f9d07c7.chunk.js",
+    "static/js/2.1f9d07c7.chunk.js.map": "/rainbowhaven-react-frontend/static/js/2.1f9d07c7.chunk.js.map",
     "index.html": "/rainbowhaven-react-frontend/index.html",
-    "precache-manifest.e9915e2e1257a39289a7a1ffc50b11d2.js": "/rainbowhaven-react-frontend/precache-manifest.e9915e2e1257a39289a7a1ffc50b11d2.js",
+    "precache-manifest.628ab1748235609c5fae16107672e6da.js": "/rainbowhaven-react-frontend/precache-manifest.628ab1748235609c5fae16107672e6da.js",
     "service-worker.js": "/rainbowhaven-react-frontend/service-worker.js",
     "static/css/2.af3c1da9.chunk.css.map": "/rainbowhaven-react-frontend/static/css/2.af3c1da9.chunk.css.map",
-    "static/css/main.c92db21f.chunk.css.map": "/rainbowhaven-react-frontend/static/css/main.c92db21f.chunk.css.map",
-    "static/js/2.a3e895e1.chunk.js.LICENSE.txt": "/rainbowhaven-react-frontend/static/js/2.a3e895e1.chunk.js.LICENSE.txt",
+    "static/css/main.72bd2370.chunk.css.map": "/rainbowhaven-react-frontend/static/css/main.72bd2370.chunk.css.map",
+    "static/js/2.1f9d07c7.chunk.js.LICENSE.txt": "/rainbowhaven-react-frontend/static/js/2.1f9d07c7.chunk.js.LICENSE.txt",
     "static/media/App.css": "/rainbowhaven-react-frontend/static/media/bigBalloon.c49e2575.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.d3c22bb4.js",
     "static/css/2.af3c1da9.chunk.css",
-    "static/js/2.a3e895e1.chunk.js",
-    "static/css/main.c92db21f.chunk.css",
-    "static/js/main.2d269cf0.chunk.js"
+    "static/js/2.1f9d07c7.chunk.js",
+    "static/css/main.72bd2370.chunk.css",
+    "static/js/main.e39e488b.chunk.js"
   ]
 }
