@@ -29,20 +29,20 @@ function Map() {
     >
       <Marker
         icon={{ url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png" }}
-        position={{ lat: 53.483959, lng: -2.244644 }}
+        position={{ lat: 53.45395, lng: -2.29939}}
         label={{
           fontSize: "15px",
-          text: "Tom",
+          text: "Maryia",
           color: "white",
           fontWeight: "bold",
         }}
       />
       <Marker
         icon={{ url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png" }}
-        position={{ lat: 53.46882, lng: -2.15621 }}
+        position={{ lat: 53.45719, lng: -2.16283 }}
         label={{
           fontSize: "15px",
-          text: "Tom",
+          text: "Sam",
           color: "white",
           fontWeight: "bold",
         }}
@@ -50,20 +50,20 @@ function Map() {
 
       <Marker
         icon={{ url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" }}
-        position={{ lat: 53.450714, lng: -1.994911 }}
+        position={{ lat: 53.44167, lng:-2.27612 }}
         label={{
           fontSize: "15px",
-          text: "Tom",
+          text: "John",
           color: "white",
           fontWeight: "bold",
         }}
       />
       <Marker
         icon={{ url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" }}
-        position={{ lat: 53.4828, lng: -2.20435 }}
+        position={{ lat:53.46771, lng: -2.17517 }}
         label={{
           fontSize: "15px",
-          text: "Tom",
+          text: "Hannah",
           color: "white",
           fontWeight: "bold",
         }}
